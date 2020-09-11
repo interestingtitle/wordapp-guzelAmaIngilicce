@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:toast/toast.dart';
 class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
@@ -20,7 +20,9 @@ class _SignInState extends State<SignIn> {
         child: RaisedButton(
           child: Text("Anonim Giriş Yap"),
           onPressed: () async{
-            
+            Toast.show(
+                "Welcome: ", context, duration: Toast.LENGTH_SHORT,
+                gravity: Toast.BOTTOM);
           },
         ),
       ),
