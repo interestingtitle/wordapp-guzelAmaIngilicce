@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1096609791207",
+    "firebase_url": "https://guzel-ama-ingilicce.firebaseio.com",
+    "project_id": "guzel-ama-ingilicce",
+    "storage_bucket": "guzel-ama-ingilicce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096609791207:android:43551257cf449081223642",
+        "android_client_info": {
+          "package_name": "com.it.guzel_ama_ingilicce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096609791207-ptjjs2r4ojbjbu1sf1q7fe3eaf28isem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg8-yrwLEJ0Wme7t7GPDPqFcIHz00jBwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096609791207-ptjjs2r4ojbjbu1sf1q7fe3eaf28isem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
