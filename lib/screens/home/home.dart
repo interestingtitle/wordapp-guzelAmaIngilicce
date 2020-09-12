@@ -1,22 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
-class Home extends StatelessWidget {
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:guzel_ama_ingilicce/screens/profile/profile.dart';
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
 
+class _HomeState extends State<Home> {
   AuthService _firebaseAuth = AuthService();
-
-
-
+  int _pageIndex = 0;
+  GlobalKey _bottomNavigationKey = GlobalKey();
+  List <Widget> _widgets=<Widget>[
+    Text("One"),
+    Text("Two"),
+    Profile(),
+  ];
+  void _onItemTap(int index)
+  {
+    setState(() {
+      _pageIndex=index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Signed In"),
+        title: Text("Welcome - Signed In"),
         backgroundColor: Colors.lightBlueAccent,
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text("logout"),
+            label: Text("Logout"),
             onPressed: () async{
               await _firebaseAuth.signOut();
 
@@ -24,9 +40,40 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-
+      bottomNavigationBar: CurvedNavigationBar(
+        index: 0,
+        height: 50.0,
+        items: <Widget>[
+          Icon(Icons.add, size: 30),
+          Icon(Icons.list, size: 30),
+          //Icon(Icons.compare_arrows, size: 30),
+          //Icon(Icons.call_split, size: 30),
+          Icon(Icons.perm_identity, size: 30),
+        ],
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
+        backgroundColor: Colors.lightBlue[200],
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 500),
+        onTap: (index) {
+          //setState(() {
+            //_pageIndex = index;
+          //});
+          _onItemTap(index);
+        },
       ),
+      body: Container(
+        color: Colors.lightBlue[200],
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  _widgets.elementAt(_pageIndex),
+
+               ],
+              ),
+            ),
+          )
     );
+
   }
 }
