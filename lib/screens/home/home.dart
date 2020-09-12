@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Welcome - Signed In"),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.blue[300],
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
         buttonBackgroundColor: Colors.white,
         backgroundColor: Colors.lightBlue[200],
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 500),
+        animationDuration: Duration(milliseconds: 200),
         onTap: (index) {
           //setState(() {
             //_pageIndex = index;
