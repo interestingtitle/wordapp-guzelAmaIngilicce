@@ -33,11 +33,11 @@ class WordsTest extends StatefulWidget {
   _WordsTestState createState() => _WordsTestState();
 }
 
-void createWordData(String enValue,String trValue )
+Future <void> createWordData(String enValue,String trValue ) async
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   wordList.add(wordNew);
-  print(wordList);
+  //print(wordList);
 
 }
 Future <void> getWordList(int rnd) async
@@ -46,12 +46,12 @@ Future <void> getWordList(int rnd) async
   FirebaseFirestore.instance
       .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
       .get()
-      .then((value) {
-         createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+      .then((value) async{
+         await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
       }
   );
 }
-void getRandomWordList() async
+Future <void> getRandomWordList() async
 {
   Random random = new Random();
   int randomNumber = random.nextInt(15) + 1;
@@ -75,7 +75,7 @@ class _WordsTestState extends State<WordsTest> {
         child:RaisedButton(
           color:Colors.white,
           onPressed: () async{
-            getRandomWordList();
+            await getRandomWordList();
             printList();
           },
         ),
@@ -85,72 +85,5 @@ class _WordsTestState extends State<WordsTest> {
     ),
     );
 
-  }
-}
-
-
-class LoadDataFromFirestore extends StatefulWidget {
-  @override
-  _LoadDataFromFirestoreState createState() => _LoadDataFromFirestoreState();
-}
-
-class _LoadDataFromFirestoreState extends State<LoadDataFromFirestore> {
-  @override
-  void initState() {
-    super.initState();
-    getDriversList().then((results) {
-      setState(() {
-        querySnapshot = results;
-        var ab=querySnapshot;
-      });
-    });
-  }
-
-  QuerySnapshot querySnapshot;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _showDrivers(),
-    );
-  }
-
-  //build widget as prefered
-  //i'll be using a listview.builder
-  Widget _showDrivers() {
-    //check if querysnapshot is null
-    if (querySnapshot != null) {
-      return ListView.builder(
-        primary: false,
-        itemCount: querySnapshot.documents.length,
-        padding: EdgeInsets.all(12),
-        itemBuilder: (context, i) {
-          return Column(
-            children: <Widget>[
-//load data into widgets
-              //Text("${querySnapshot.docs[i].data['activation']}"),
-              //Text("${querySnapshot.documents[i].data['car1']}"),
-              //Text("${querySnapshot.documents[i].data['car2']}"),
-              //Text("${querySnapshot.documents[i].data['car5']}"),
-              //Text("${querySnapshot.documents[i].data['name']}"),
-              //Text("${querySnapshot.documents[i].data['phone']}"),
-            ],
-          );
-        },
-      );
-    } else {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    }
-  }
-
-  //get firestore instance
-  getDriversList() async {
-    final CollectionReference wordsCollection = FirebaseFirestore.instance.collection("wordlist").doc("category").collection("fruits");
-    return wordsCollection.snapshots();
-  }
-  Stream<QuerySnapshot> get users{
-    final CollectionReference wordsCollection = FirebaseFirestore.instance.collection("wordlist").doc("category").collection("fruits");
-    return wordsCollection.snapshots();
   }
 }
