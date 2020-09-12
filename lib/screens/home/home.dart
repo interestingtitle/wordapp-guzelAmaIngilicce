@@ -61,15 +61,11 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         color: Colors.lightBlue[200],
-            child: Center(
-              child: Column(
-                children: <Widget>[
-                  _widgets.elementAt(_pageIndex),
-               ],
-              ),
-            ),
-          )
-    );
+        child: _widgets.elementAt(_pageIndex),
+      ),
+            );
+
+
 
   }
 }
