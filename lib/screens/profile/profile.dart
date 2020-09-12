@@ -28,6 +28,7 @@ class _ProfileState extends State<Profile> {
     @override
     Widget build(BuildContext context) {
       final user = Provider.of<CUser>(context);
+      final fruits = Provider.of<QuerySnapshot>(context);
       return Container(
 
         child:ListView(
@@ -63,6 +64,7 @@ class _ProfileState extends State<Profile> {
               ),
               onPressed: () async{
                 await DatabaseService(uid: user.uid).updateUserData("ahmet",15);
+
 
               },
             ),
