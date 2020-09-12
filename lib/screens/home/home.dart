@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<QuerySnapshot>.value(
-      value: DatabaseService().users,
+      value: DatabaseService().fruits,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Welcome - Signed In"),

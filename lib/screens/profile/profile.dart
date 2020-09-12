@@ -28,6 +28,7 @@ class _ProfileState extends State<Profile> {
     @override
     Widget build(BuildContext context) {
       final user = Provider.of<CUser>(context);
+      final fruits = Provider.of<QuerySnapshot>(context);
       return Container(
 
         child:ListView(
@@ -136,9 +137,10 @@ class _ProfileState extends State<Profile> {
                 child: Text('Profile Settings            '
                     '                  '
                     '                  '
-                    '           >'),
+                    '                   >'),
               ),
               onPressed: () {
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileSettings()),
@@ -146,9 +148,6 @@ class _ProfileState extends State<Profile> {
               },
             ),
           ),
-
-
-
         ],
       ),
       );
