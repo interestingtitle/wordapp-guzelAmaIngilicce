@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:guzel_ama_ingilicce/models/user.dart';
+import 'package:guzel_ama_ingilicce/services/database.dart';
 
 class AuthService {
 
@@ -57,6 +58,7 @@ class AuthService {
     try{
       UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       User user = result.user;
+      await DatabaseService(uid: user.uid).updateUserData("baris", 10);
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());
