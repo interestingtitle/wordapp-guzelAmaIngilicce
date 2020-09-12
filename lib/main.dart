@@ -4,13 +4,39 @@ import 'package:guzel_ama_ingilicce/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:provider/provider.dart';
+import 'package:splashscreen/splashscreen.dart';
+
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(new MaterialApp(
+    home: new MyApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+        seconds: 6,
+        navigateAfterSeconds: new AfterSplash(),
+        title: new Text('Welcome In Wordapp', style: TextStyle(color: Colors.black),),
+        image: Image.asset('assets/Curve-Loading.gif',width: 500.0, height: 500.0,),
+        backgroundColor: Colors.white,
+        styleTextUnderTheLoader: new TextStyle(),
+        photoSize: 200.0,
+        loaderColor: Colors.white
+    );
+  }
+}
+
+
+class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<CUser>.value(

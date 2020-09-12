@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:guzel_ama_ingilicce/shared/constants.dart';
+import 'package:guzel_ama_ingilicce/shared/loading.dart';
 
 class Register extends StatefulWidget {
 
@@ -13,12 +15,15 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
-  String email;
-  String password;
+  final _formKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
+  String error = "";
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
@@ -37,41 +42,74 @@ class _RegisterState extends State<Register> {
       body: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 20.0,),
-                TextFormField(
-                  onChanged: (val){
-                    setState(() {
-                      email = val;
-                    });
-                  },
-                ),
-                SizedBox(height: 20.0,),
-                TextFormField(
-                  obscureText: true,
-                  onChanged: (val){
-                    setState(() {
-                      password = val;
-                    });
-                  },
-                ),
-                SizedBox(height: 20.0,),
-                RaisedButton(
-                  color: Colors.blue[800],
-                  child: Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        color: Colors.white
-                    ),
+            key: _formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 20.0,),
+                  TextFormField(
+                    decoration: textInputDecoration.copyWith(hintText: "Email"),
+                    validator: (val){
+                      if(val.isEmpty)
+                        return "Enter an email";
+                      else
+                        return null;
+                    },
+                    onChanged: (val){
+                      setState(() {
+                        email = val;
+                      });
+                    },
                   ),
-                  onPressed: () async{
-                    await _auth.createUserWithEmailAndPassword(email, password);
+                  SizedBox(height: 20.0,),
+                  TextFormField(
 
+                    decoration: textInputDecoration.copyWith(hintText: "Password"),
+                    obscureText: true,
+                    validator: (val){
+                      if(val.length<6)
+                        return "Password cannot be less than 6 character";
+                      else
+                        return null;
+                    },
+                    onChanged: (val){
+                      setState(() {
+                        password = val;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 20.0,),
+                  RaisedButton(
+                    color: Colors.blue[800],
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                          color: Colors.white
+                      ),
+                    ),
+                    onPressed: () async{
+                      if(_formKey.currentState.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
+                        dynamic result = await _auth.createUserWithEmailAndPassword(email, password);
+                        if(result == null){
+                          setState(() {
+                            loading = false;
+                            error = "Please write a valid email!";
+                          });
+                        }
+                      }
 
-                  },
-                )
-              ],
+                    },
+                  ),
+                  SizedBox(height: 20.0,),
+                  Text(
+                    error,
+                    style: TextStyle(color: Colors.black, fontSize: 14.0),
+                  )
+                ],
+              ),
             ),
           )
       ),
