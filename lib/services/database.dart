@@ -20,7 +20,6 @@ class DatabaseService {
   Stream<QuerySnapshot> get fruits{
     return wordlistCollection.snapshots();
   }
-  Future<DocumentSnapshot> alici async{
 
-}
+
 }
