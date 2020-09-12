@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guzel_ama_ingilicce/screens/words/wordsmain.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:guzel_ama_ingilicce/screens/profile/profile.dart';
@@ -17,7 +18,7 @@ class _HomeState extends State<Home> {
   GlobalKey _bottomNavigationKey = GlobalKey();
   List <Widget> _widgets=<Widget>[
     Text("One"),
-    Text("Home"),
+    Words(),
     Profile(),
   ];
   void _onItemTap(int index)

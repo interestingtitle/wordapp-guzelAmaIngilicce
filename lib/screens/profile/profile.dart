@@ -15,8 +15,8 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
+  final FirebaseAuth auth = FirebaseAuth.instance;
   final AuthService _auth = AuthService();
-
   String a = "ahmet";
   int b = 15;
 
@@ -31,55 +31,30 @@ class _ProfileState extends State<Profile> {
       return Container(
 
         child:ListView(
-
-        children: <Widget>[
-          //SizedBox(height: 20.0,),
+          padding: new EdgeInsets.all(1.0),
+          children: <Widget>[
           SizedBox(
-            height: 50.0,
-            child: RaisedButton(
+              height: 200.0,
+              child:RaisedButton(
+                color:Colors.white,
+                onPressed: (){},
+              ),
+
+          ),
+          SizedBox(
+            height: 60,
+            child:RaisedButton(
+
               color: Colors.grey[100],
               child: Align(
+
                 alignment: Alignment.centerLeft,
                 child: Text('Profile Settings            '
                     '                  '
                     '                  '
-                    '           >'),
-              ),
-              onPressed: () async{
-
-              },
-            ),
-          ),
-          SizedBox(
-            height: 50.0,
-            child: RaisedButton(
-              color: Colors.grey[100],
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('b Settings            '
-                    '                  '
-                    '                  '
-                    '                    >'),
-              ),
-              onPressed: () async{
-                await DatabaseService(uid: user.uid).updateUserData("ahmet",15);
-
-              },
-            ),
-          ),
-          SizedBox(
-            height: 50.0,
-            child: RaisedButton(
-              color: Colors.grey[100],
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('A Settings            '
-                    '                  '
-                    '                  '
-                    '                   >'),
+                    '            >'),
               ),
               onPressed: () {
-
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileSettings()),
@@ -87,6 +62,93 @@ class _ProfileState extends State<Profile> {
               },
             ),
           ),
+          SizedBox(
+            height: 60,
+            child:RaisedButton(
+
+              color: Colors.grey[100],
+              child: Align(
+
+                alignment: Alignment.centerLeft,
+                child: Text('Profile Settings            '
+                    '                  '
+                    '                  '
+                    '           >'),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileSettings()),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 60,
+            child:RaisedButton(
+
+              color: Colors.grey[100],
+              child: Align(
+
+                alignment: Alignment.centerLeft,
+                child: Text('Profile Settings            '
+                    '                  '
+                    '                  '
+                    '           >'),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileSettings()),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 60,
+            child:RaisedButton(
+
+              color: Colors.grey[100],
+              child: Align(
+
+                alignment: Alignment.centerLeft,
+                child: Text('Profile Settings            '
+                    '                  '
+                    '                  '
+                    '           >'),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileSettings()),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 60,
+            child:RaisedButton(
+
+              color: Colors.grey[100],
+              child: Align(
+
+                alignment: Alignment.centerLeft,
+                child: Text('Profile Settings            '
+                    '                  '
+                    '                  '
+                    '           >'),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileSettings()),
+                );
+              },
+            ),
+          ),
+
+
+
         ],
       ),
       );
