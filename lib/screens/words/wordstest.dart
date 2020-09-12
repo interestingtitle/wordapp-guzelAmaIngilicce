@@ -13,13 +13,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-List wordList=new List();
 
+List wordList=new List();
 class WordData
 {
   String dataEN;
   String dataTR;
   WordData({this.dataEN,this.dataTR});
+  @override
+  String toString() {
+    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
+  }
 }
 
 
@@ -33,11 +37,10 @@ void createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   wordList.add(wordNew);
-  print(wordList.elementAt(0).toString());
-  var abc=wordList;
-  wordList.add(wordNew);
+  print(wordList);
+
 }
-void getWordList(int rnd) async
+Future <void> getWordList(int rnd) async
 {
 
   FirebaseFirestore.instance
@@ -52,7 +55,11 @@ void getRandomWordList() async
 {
   Random random = new Random();
   int randomNumber = random.nextInt(15) + 1;
-  getWordList(randomNumber);
+  await getWordList(randomNumber);
+}
+void printList()
+{
+  print(wordList);
 }
 class _WordsTestState extends State<WordsTest> {
   @override
@@ -69,6 +76,7 @@ class _WordsTestState extends State<WordsTest> {
           color:Colors.white,
           onPressed: () async{
             getRandomWordList();
+            printList();
           },
         ),
 
