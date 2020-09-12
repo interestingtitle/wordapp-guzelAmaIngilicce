@@ -21,11 +21,58 @@ class _ProfileState extends State<Profile> {
     @override
     Widget build(BuildContext context) {
       return Container(
+
         child:ListView(
         children: <Widget>[
-          Text("Test1"),
-          Text("Test2"),
-          Text("Test3"),
+          SizedBox(height: 20.0,),
+          RaisedButton(
+            color: Colors.grey[100],
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Profile Settings            '
+                  '                  '
+                  '                  '
+                  '           >'),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileSettings()),
+              );
+            },
+          ),
+          RaisedButton(
+            color: Colors.grey[100],
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('b Settings            '
+                  '                  '
+                  '                  '
+                  '                    >'),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileSettings()),
+              );
+            },
+          ),
+          RaisedButton(
+            color: Colors.grey[100],
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('A Settings            '
+                  '                  '
+                  '                  '
+                  '                   >'),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileSettings()),
+              );
+            },
+          ),
         ],
       ),
       );
