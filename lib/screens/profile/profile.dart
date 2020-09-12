@@ -22,8 +22,45 @@ class _ProfileState extends State<Profile> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Text("Profile"+inputData().toString()),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Expanded(
+          child: Text('Profile'+inputData().toString()),
+        ),
+         RaisedButton(
+            child: Text('Open route'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondRoute()),
+              );
+            },
+        ),
+
+
+          ],
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text("Profile"),
+        backgroundColor: Colors.blue[300],
+        elevation: 0.0,
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
     );
   }
 }

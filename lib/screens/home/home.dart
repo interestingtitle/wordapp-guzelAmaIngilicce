@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   int _pageIndex = 0;
   GlobalKey _bottomNavigationKey = GlobalKey();
   List <Widget> _widgets=<Widget>[
-    UserList(),
+    Text("One"),
     Text("Two"),
     Profile(),
   ];
