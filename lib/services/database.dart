@@ -12,4 +12,8 @@ class DatabaseService {
       "userPoint": userPoint,
     });
   }
+
+  Stream<QuerySnapshot> get users{
+    return userCollection.snapshots();
+  }
 }
