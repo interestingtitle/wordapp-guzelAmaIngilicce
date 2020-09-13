@@ -62,9 +62,13 @@ Future <void> getWordList(int rnd) async
 }
 Future <void> getRandomWordList() async
 {
-  Random random = new Random();
-  int randomNumber = random.nextInt(15) + 1;
-  await getWordList(randomNumber);
+  for(int _index=0;wordList.length<3;_index++)
+    {
+      Random random = new Random();
+      int randomNumber = random.nextInt(15) + 1;
+      await getWordList(randomNumber);
+    }
+
 }
 void printList()
 {
