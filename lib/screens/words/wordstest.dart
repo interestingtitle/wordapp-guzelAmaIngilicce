@@ -48,8 +48,7 @@ Future<void> createWordData(String enValue,String trValue )
   });
   if(!duplicate)
   wordList.add(wordNew);
-  else
-    return null;
+
 }
 Future <void> getWordList(int rnd) async
 {
