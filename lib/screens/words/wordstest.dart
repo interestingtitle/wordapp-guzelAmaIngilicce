@@ -74,7 +74,7 @@ Future <void> getRandomWordList() async
   for(int _index=0;wordList.length<=2;_index++)
     {
       Random random = new Random();
-      int randomNumber = random.nextInt(14) + 1;
+      int randomNumber = random.nextInt(15) + 1;
       await getWordList(randomNumber);
     }
   if(wordList==null ||wordList.length<2)
@@ -92,7 +92,11 @@ void printList()
   });
 }
 class _WordsTestState extends State<WordsTest> {
+  String optionA="A";
+  String optionB="B";
+  String optionC="C";
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -110,6 +114,11 @@ class _WordsTestState extends State<WordsTest> {
                 onPressed: () async{
                   await getRandomWordList();
                   printList();
+                  setState(() {
+                    optionA=wordList[0].dataEN.toString();
+                    optionB=wordList[1].dataEN.toString();
+                    optionC=wordList[2].dataEN.toString();
+                  });
                 },
               ),
             ),
@@ -125,10 +134,60 @@ class _WordsTestState extends State<WordsTest> {
               child: SizedBox(
                 height: 100,
                 child: RaisedButton(
+                  child: Text(optionA),
                   color:Colors.white,
                   onPressed: () async{
                     await getRandomWordList();
                     printList();
+                      setState(() {
+                        optionA=wordList[0].dataEN.toString();
+                      });
+                  },
+                ),
+              ),
+            ),
+            Container(
+              decoration:
+              BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+              ),
+              child: SizedBox(
+                height: 100,
+                child: RaisedButton(
+                  child: Text(optionB),
+                  color:Colors.white,
+                  onPressed: () async{
+                    await getRandomWordList();
+                    printList();
+                      setState(() {
+
+                      });
+                  },
+                ),
+              ),
+            ),
+            Container(
+              decoration:
+              BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+              ),
+              child: SizedBox(
+                height: 100,
+                child: RaisedButton(
+                  child: Text(optionC),
+                  color:Colors.white,
+                  onPressed: () async{
+                    await getRandomWordList();
+                    printList();
+                    setState(() {
+                      optionC=wordList[1].dataEN.toString();
+                    });
                   },
                 ),
               ),
