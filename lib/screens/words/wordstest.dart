@@ -37,6 +37,7 @@ Future<void> createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   bool duplicate=false;
+
   wordList.forEach((element) {
     if(element.dataEN==wordNew.dataEN)
       {
@@ -52,27 +53,40 @@ Future<void> createWordData(String enValue,String trValue )
 }
 Future <void> getWordList(int rnd) async
 {
-  await FirebaseFirestore.instance
-      .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
-      .get()
-      .then((value) async {
-        await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
-      }
-  );
+  try{
+    await FirebaseFirestore.instance
+        .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
+        .get()
+        .then((value) async {
+      await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+    }
+    );
+  }
+  catch (e)
+  {
+    print("Cannot get data");
+  }
+
 }
 Future <void> getRandomWordList() async
 {
-  for(int _index=0;wordList.length<3;_index++)
+  wordList.clear();
+  for(int _index=0;wordList.length<=2;_index++)
     {
       Random random = new Random();
-      int randomNumber = random.nextInt(15) + 1;
+      int randomNumber = random.nextInt(14) + 1;
       await getWordList(randomNumber);
+    }
+  if(wordList==null ||wordList.length<2)
+    {
+      print("Not enough word data");
     }
 
 }
 void printList()
 {
   print("---------------------------");
+  print("Length: "+wordList.length.toString());
   wordList.forEach((element) {
     print("-->"+element.dataTR + " " + element.dataEN);
   });
@@ -80,31 +94,53 @@ void printList()
 class _WordsTestState extends State<WordsTest> {
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body:Container(
+        color: Colors.white,
+        child:ListView(
+          padding: new EdgeInsets.all(1.0),
+          children: <Widget>[
 
-    return Container(
-      color: Colors.white,
-      child:ListView(
-        padding: new EdgeInsets.all(1.0),
-        children: <Widget>[
-        SizedBox(
-        height: 200.0,
-        child:RaisedButton(
-          color:Colors.white,
-          onPressed: () async{
-            await getRandomWordList();
-            printList();
-          },
-        ),
-        ),
-        SizedBox(
-        height: 50.0,
-        child:
-        Text("hello"),
+            SizedBox(
+              height: 200.0,
+              child:RaisedButton(
 
-      ),
-      ],
-    ),
+                color:Colors.white,
+                onPressed: () async{
+                  await getRandomWordList();
+                  printList();
+                },
+              ),
+            ),
+
+            Container(
+              decoration:
+              BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+              ),
+              child: SizedBox(
+                height: 100,
+                child: RaisedButton(
+                  color:Colors.white,
+                  onPressed: () async{
+                    await getRandomWordList();
+                    printList();
+                  },
+                ),
+              ),
+            ),
+
+
+
+
+          ],
+        ),
+      )
+
     );
-
   }
 }
