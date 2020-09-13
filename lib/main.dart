@@ -23,9 +23,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-        seconds: 6,
+        seconds: 4,
         navigateAfterSeconds: new AfterSplash(),
-        title: new Text('Welcome In Wordapp', style: TextStyle(color: Colors.black),),
+        title: new Text('WordAPP', style: TextStyle(color: Colors.black),),
         image: Image.asset('assets/Curve-Loading.gif',width: 500.0, height: 500.0,),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),

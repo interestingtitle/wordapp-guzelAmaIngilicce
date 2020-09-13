@@ -13,18 +13,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-String holder = "";
-List wordList=new List<WordData>();
+
+List <WordData> wordList=new List();
 class WordData
 {
   String dataEN;
   String dataTR;
   WordData({this.dataEN,this.dataTR});
-
-//  @override
-//  String toString() {
-//    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
-//  }
+  @override
+  String toString() {
+    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
+  }
 }
 
 
@@ -34,22 +33,30 @@ class WordsTest extends StatefulWidget {
   _WordsTestState createState() => _WordsTestState();
 }
 
-void createWordData(String enValue,String trValue )
+Future<void> createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
+  bool duplicate=false;
+  wordList.forEach((element) {
+    if(element.dataEN==wordNew.dataEN)
+      {
+        print("Duplicate record: "+element.dataEN);
+        duplicate=true;
+        return;
+      }
+  });
+  if(!duplicate)
   wordList.add(wordNew);
-  print(wordNew.dataEN);
-  //print(wordList);
-
+  else
+    return null;
 }
 Future <void> getWordList(int rnd) async
 {
-
   await FirebaseFirestore.instance
       .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
       .get()
-      .then((value) {
-         createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+      .then((value) async {
+        await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
       }
   );
 }
@@ -61,7 +68,10 @@ Future <void> getRandomWordList() async
 }
 void printList()
 {
-  print(wordList[0]);
+  print("---------------------------");
+  wordList.forEach((element) {
+    print("-->"+element.dataTR + " " + element.dataEN);
+  });
 }
 class _WordsTestState extends State<WordsTest> {
   @override
@@ -81,6 +91,11 @@ class _WordsTestState extends State<WordsTest> {
             printList();
           },
         ),
+        ),
+        SizedBox(
+        height: 50.0,
+        child:
+        Text("hello"),
 
       ),
       ],
