@@ -17,6 +17,7 @@ class _ProfileState extends State<Profile> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final AuthService _auth = AuthService();
+
   String a = "ahmet";
   int b = 15;
 

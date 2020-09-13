@@ -13,17 +13,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-
-List wordList=new List();
+String holder = "";
+List wordList=new List<WordData>();
 class WordData
 {
   String dataEN;
   String dataTR;
   WordData({this.dataEN,this.dataTR});
-  @override
-  String toString() {
-    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
-  }
+
+//  @override
+//  String toString() {
+//    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
+//  }
 }
 
 
@@ -33,21 +34,22 @@ class WordsTest extends StatefulWidget {
   _WordsTestState createState() => _WordsTestState();
 }
 
-Future <void> createWordData(String enValue,String trValue ) async
+void createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   wordList.add(wordNew);
+  print(wordNew.dataEN);
   //print(wordList);
 
 }
 Future <void> getWordList(int rnd) async
 {
 
-  FirebaseFirestore.instance
+  await FirebaseFirestore.instance
       .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
       .get()
-      .then((value) async{
-         await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+      .then((value) {
+         createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
       }
   );
 }
@@ -59,7 +61,7 @@ Future <void> getRandomWordList() async
 }
 void printList()
 {
-  print(wordList);
+  print(wordList[0]);
 }
 class _WordsTestState extends State<WordsTest> {
   @override
