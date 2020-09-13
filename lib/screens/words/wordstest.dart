@@ -33,7 +33,7 @@ class WordsTest extends StatefulWidget {
   _WordsTestState createState() => _WordsTestState();
 }
 
-Future<void> createWordData(String enValue,String trValue )
+void createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   bool duplicate=false;
@@ -56,8 +56,8 @@ Future <void> getWordList(int rnd) async
     await FirebaseFirestore.instance
         .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
         .get()
-        .then((value) async {
-      await createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+        .then((value)  {
+       createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
     }
     );
   }
