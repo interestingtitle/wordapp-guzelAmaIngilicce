@@ -92,7 +92,7 @@ void printList()
   });
 }
 class _WordsTestState extends State<WordsTest> {
-
+  bool pressAttention = false;
 
 
   
@@ -136,12 +136,12 @@ class _WordsTestState extends State<WordsTest> {
                 height: 100,
                 child: RaisedButton(
                   child: Text(optionA),
-                  color:Colors.white,
+                  color: pressAttention ? Colors.grey : Colors.blue,
                   onPressed: () async{
                     await getRandomWordList();
                     printList();
                       setState(() {
-
+                        pressAttention = !pressAttention;
                       });
                   },
                 ),
