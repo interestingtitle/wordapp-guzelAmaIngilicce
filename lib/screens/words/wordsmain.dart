@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
+import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 
 class Words extends StatefulWidget {
   @override
