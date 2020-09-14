@@ -6,7 +6,7 @@ import 'package:guzel_ama_ingilicce/screens/profile/profile.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
+
 
 class Home extends StatefulWidget {
   @override
