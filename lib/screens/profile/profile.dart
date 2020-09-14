@@ -8,6 +8,8 @@ import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
+
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -17,6 +19,7 @@ class _ProfileState extends State<Profile> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final AuthService _auth = AuthService();
+
 
   String a = "ahmet";
   int b = 15;

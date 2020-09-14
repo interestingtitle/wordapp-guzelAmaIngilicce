@@ -9,6 +9,7 @@ import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:guzel_ama_ingilicce/models/variables.dart';
 
 class Words extends StatefulWidget {
   @override
@@ -34,7 +35,13 @@ class _WordsState extends State<Words> {
             child:RaisedButton(
               child: Text("Play"),
               color:Colors.white,
-              onPressed: (){
+              onPressed: () async{
+                await getRandomWordList();
+
+                optionA=wordList[0].dataEN.toString();
+                optionB=wordList[1].dataEN.toString();
+                optionC=wordList[2].dataEN.toString();
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => WordsTest()),

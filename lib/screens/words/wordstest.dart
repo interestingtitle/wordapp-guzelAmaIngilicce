@@ -12,6 +12,7 @@ import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:guzel_ama_ingilicce/models/variables.dart';
 
 
 List <WordData> wordList=new List();
@@ -91,9 +92,10 @@ void printList()
   });
 }
 class _WordsTestState extends State<WordsTest> {
-  String optionA="A";
-  String optionB="B";
-  String optionC="C";
+
+
+
+  
   @override
 
   Widget build(BuildContext context) {
@@ -139,7 +141,7 @@ class _WordsTestState extends State<WordsTest> {
                     await getRandomWordList();
                     printList();
                       setState(() {
-                        optionA=wordList[0].dataEN.toString();
+
                       });
                   },
                 ),
@@ -185,7 +187,7 @@ class _WordsTestState extends State<WordsTest> {
                     await getRandomWordList();
                     printList();
                     setState(() {
-                      optionC=wordList[1].dataEN.toString();
+
                     });
                   },
                 ),
