@@ -9,10 +9,10 @@ int wordListCount=0;
 String chosenWord="";
 void setOptionColors()
 {
-  Color colorQuestion=Colors.amber;
-  Color colorA=Colors.grey;
-  Color colorB=Colors.grey;
-  Color colorC=Colors.grey;
+  Color colorQuestion=Colors.lightGreen[200];
+  Color colorA=Colors.grey[150];
+  Color colorB=Colors.grey[150];
+  Color colorC=Colors.grey[150];
   Color colorD=Colors.lightBlue;
   optionColorList.clear();
   optionColorList.add(colorQuestion);

@@ -5,7 +5,7 @@ import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/models/button.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:toast/toast.dart';
-
+import 'package:flutter_countdown_timer/countdown_timer.dart';
 
 class WordsTest extends StatefulWidget {
 
@@ -19,25 +19,26 @@ class _WordsTestState extends State<WordsTest> {
 
   void getAnswer(int optionIndex,String word) async
   {
-    optionColorList[1] = Colors.grey;
-    optionColorList[2] = Colors.grey;
-    optionColorList[3] = Colors.grey;
-    print(optionIndex.toString()+word);
+    optionColorList[1] = Colors.grey[150];
+    optionColorList[2] = Colors.grey[150];
+    optionColorList[3] = Colors.grey[150];
+    //print(optionIndex.toString()+word);
     if (chosenWord == word) {
-      print("Correct Answer");
+      //print("Correct Answer");
       Toast.show(
           "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
           gravity: Toast.BOTTOM);
       optionColorList[4]=Colors.green;
+      optionStatus="İyi gidiyorsun!: "+chosenWord;
       //print(optionIndex);
     }
     else if (word == "none") {
-      optionColorList[1] = Colors.grey;
-      optionColorList[2] = Colors.grey;
-      optionColorList[3] = Colors.grey;
+      optionColorList[1] = Colors.grey[150];
+      optionColorList[2] = Colors.grey[150];
+      optionColorList[3] = Colors.grey[150];
     }
     else {
-      print("Wrong Answer");
+      //print("Wrong Answer");
       Toast.show(
           "Üzgünüm, yanlış cevap.", context, duration: Toast.LENGTH_SHORT,
           gravity: Toast.BOTTOM);
@@ -84,20 +85,19 @@ class _WordsTestState extends State<WordsTest> {
                   ),
                 ),
 
+
+                SizedBox(
+                  height: 75,
+                ),
+
+
                 Container(
-                  decoration:
-                  BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
                   child: SizedBox(
-                    height: 100,
+                    height: 75,
                     child: RaisedButton(
                       child: Text(optionA),
                       color: optionColorList[1],
-
+                      shape: StadiumBorder(),
                       onPressed: () async {
                         getAnswer(1, optionA);
                         await getRandomWordList();
@@ -114,19 +114,16 @@ class _WordsTestState extends State<WordsTest> {
                     ),
                   ),
                 ),
-                Container(
-                  decoration:
-                  BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
+                    SizedBox(
+                      height: 5
                     ),
-                  ),
+                Container(
                   child: SizedBox(
-                    height: 100,
+                    height: 75,
                     child: RaisedButton(
                       child: Text(optionB),
-                      color: optionColorList[2],
+                      color: optionColorList[3],
+                      shape: StadiumBorder(),
                       onPressed: () async {
                         getAnswer(2, optionB);
                         await getRandomWordList();
@@ -141,19 +138,19 @@ class _WordsTestState extends State<WordsTest> {
                     ),
                   ),
                 ),
+
+              SizedBox(
+                  height: 5
+              ),
+
+
                 Container(
-                  decoration:
-                  BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
                   child: SizedBox(
-                    height: 100,
+                    height: 75,
                     child: RaisedButton(
                       child: Text(optionC),
                       color: optionColorList[3],
+                      shape: StadiumBorder(),
                       onPressed: () async {
                         getAnswer(3, optionC);
                         await getRandomWordList();
