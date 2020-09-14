@@ -16,7 +16,7 @@ void getAnswer(int optionIndex,String word) async
       optionColorList[1]=Colors.grey;
       optionColorList[2]=Colors.grey;
       optionColorList[3]=Colors.grey;
-      print(optionIndex.toString()+word);
+      //print(optionIndex.toString()+word);
       if(wordList[0].dataEN.toString()== word)
         {
           print("Correct Answer");
@@ -33,7 +33,7 @@ void getAnswer(int optionIndex,String word) async
                 }
 
             }
-          print(optionIndex);
+          //print(optionIndex);
 
         }
       else if(word=="none")
@@ -95,6 +95,7 @@ class _WordsTestState extends State<WordsTest> {
                       pressAttention2 = false;
                       pressAttention3=false;
                         getAnswer(0, "none");
+
                     });
 
                   },
@@ -115,9 +116,7 @@ class _WordsTestState extends State<WordsTest> {
                     child: Text(optionA),
                     color:optionColorList[1],
 
-                    onPressed: () {
-                      //await getRandomWordList();
-                      printList();
+                    onPressed: () async{
 
                       setState(() {
                         pressAttention = true;
@@ -125,6 +124,8 @@ class _WordsTestState extends State<WordsTest> {
                         pressAttention3=false;
                         getAnswer(1,optionA);
 
+
+                        //printList();
                       });
                       //sleep1();
                     },
