@@ -5,6 +5,21 @@ import 'dart:math';
 
 
 List <WordData> wordList=new List();
+List <Color> optionColorList=new List();
+void setOptionColors()
+{
+  Color colorQuestion=Colors.amber;
+  Color colorA=Colors.grey;
+  Color colorB=Colors.grey;
+  Color colorC=Colors.grey;
+  optionColorList.clear();
+  optionColorList.add(colorQuestion);
+  optionColorList.add(colorA);
+  optionColorList.add(colorB);
+  optionColorList.add(colorC);
+
+
+}
 class WordData
 {
   String dataEN;
@@ -36,13 +51,17 @@ void createWordData(String enValue,String trValue )
 Future <void> getWordList(int rnd) async
 {
   try{
-    await FirebaseFirestore.instance
-        .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
-        .get()
-        .then((value)  {
-      createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
-    }
-    );
+    if(wordList.length<3)
+      {
+        await FirebaseFirestore.instance
+            .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
+            .get()
+            .then((value)  {
+          createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+        }
+        );
+      }
+
   }
   catch (e)
   {
@@ -56,7 +75,7 @@ Future <void> getRandomWordList() async
   for(int _index=0;wordList.length<=2;_index++)
   {
     Random random = new Random();
-    int randomNumber = random.nextInt(15) + 1;
+    int randomNumber = random.nextInt(24) + 1;
     await getWordList(randomNumber);
   }
   if(wordList==null ||wordList.length<2)

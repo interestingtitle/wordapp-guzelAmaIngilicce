@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/models/datasetter.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/models/button.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
-import '';
 
 
 
@@ -13,16 +11,33 @@ class WordsTest extends StatefulWidget {
   @override
   _WordsTestState createState() => _WordsTestState();
 }
+void getAnswer(int optionIndex,String word) async
+{
 
+      print(optionIndex.toString()+word);
+      if(wordList[0].dataEN.toString()== word)
+        {
+          print("Correct Answer");
+          optionColorList[optionIndex]=Colors.green;
+        }
+      else if(word=="none")
+        {
+          optionColorList[1]=Colors.grey;
+          optionColorList[2]=Colors.grey;
+          optionColorList[3]=Colors.grey;
+        }
+      else
+        {
+          print("Wrong Answer");
+          optionColorList[optionIndex]=Colors.red;
+        }
+
+}
 
 class _WordsTestState extends State<WordsTest> {
   bool pressAttention = false;
   bool pressAttention2 = false;
   bool pressAttention3 = false;
-  List<String> list1 = ["bisiklet","gemi"];
-  List<String> list2 = ["cycle","ship"];
-
-
   @override
 
   Widget build(BuildContext context) {
@@ -50,6 +65,7 @@ class _WordsTestState extends State<WordsTest> {
                       pressAttention=false;
                       pressAttention2 = false;
                       pressAttention3=false;
+
                     });
 
                   },
@@ -68,8 +84,9 @@ class _WordsTestState extends State<WordsTest> {
                   height: 100,
                   child: RaisedButton(
                     child: Text(optionA),
-                    color: pressAttention ? Colors.blue : Colors.grey,
-                    onPressed: () async{
+                    color:optionColorList[1],
+
+                    onPressed: () {
                       //await getRandomWordList();
                       printList();
 
@@ -77,9 +94,10 @@ class _WordsTestState extends State<WordsTest> {
                         pressAttention = true;
                         pressAttention2=false;
                         pressAttention3=false;
+                        getAnswer(1,optionA);
 
                       });
-                      sleep1();
+                      //sleep1();
                     },
                   ),
                 ),
@@ -96,7 +114,7 @@ class _WordsTestState extends State<WordsTest> {
                   height: 100,
                   child: RaisedButton(
                     child: Text(optionB),
-                    color: pressAttention2 ? Colors.blue : Colors.grey,
+                    color: optionColorList[2],
                     onPressed: () async{
                       //await getRandomWordList();
                       printList();
@@ -107,6 +125,7 @@ class _WordsTestState extends State<WordsTest> {
                         pressAttention=false;
                         pressAttention2 = true;
                         pressAttention3=false;
+                        getAnswer(2,optionB);
                       });
                       sleep1();
                     },
@@ -125,7 +144,7 @@ class _WordsTestState extends State<WordsTest> {
                   height: 100,
                   child: RaisedButton(
                     child: Text(optionC),
-                    color: pressAttention3 ? Colors.blue : Colors.grey,
+                    color: optionColorList[3],
                     onPressed: () async{
                       //await getRandomWordList();
                       printList();
@@ -135,6 +154,7 @@ class _WordsTestState extends State<WordsTest> {
                         pressAttention=false;
                         pressAttention2 =false;
                         pressAttention3=true;
+                        getAnswer(3,optionC);
                       });
                       sleep1();
                     },

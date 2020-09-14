@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   AuthService _firebaseAuth = AuthService();
   int _pageIndex = 1;
-  GlobalKey _bottomNavigationKey = GlobalKey();
+  //GlobalKey _bottomNavigationKey = GlobalKey();
   List <Widget> _widgets=<Widget>[
     Text("One"),
     Words(),
