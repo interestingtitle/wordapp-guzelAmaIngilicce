@@ -121,9 +121,9 @@ class _WordsTestState extends State<WordsTest> {
                       optionB=wordList[1].dataEN.toString();
                       optionC=wordList[2].dataEN.toString();
 
-                      pressAttention=true;
-                      pressAttention2 = true;
-                      pressAttention3=true;
+                      pressAttention=false;
+                      pressAttention2 = false;
+                      pressAttention3=false;
                     });
                   },
                 ),
@@ -147,9 +147,9 @@ class _WordsTestState extends State<WordsTest> {
                       printList();
 
                       setState(() {
-                        pressAttention = false;
-                        pressAttention2=true;
-                        pressAttention3=true;
+                        pressAttention = true;
+                        pressAttention2=false;
+                        pressAttention3=false;
 
                       });
                       sleep1();
@@ -177,9 +177,9 @@ class _WordsTestState extends State<WordsTest> {
                       setState(() {
 
 
-                        pressAttention=true;
-                        pressAttention2 = false;
-                        pressAttention3=true;
+                        pressAttention=false;
+                        pressAttention2 = true;
+                        pressAttention3=false;
                       });
                       sleep1();
                     },
@@ -205,9 +205,9 @@ class _WordsTestState extends State<WordsTest> {
 
                       setState(()  {
 
-                        pressAttention=true;
-                        pressAttention2 =true;
-                        pressAttention3=!pressAttention3;
+                        pressAttention=false;
+                        pressAttention2 =false;
+                        pressAttention3=true;
                       });
                       sleep1();
                     },
