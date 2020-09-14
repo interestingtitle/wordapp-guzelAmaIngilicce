@@ -51,7 +51,7 @@ class _WordsTestState extends State<WordsTest> {
                       pressAttention2 = false;
                       pressAttention3=false;
                     });
-                    await setterForData(list1, list2);
+
                   },
                 ),
               ),
