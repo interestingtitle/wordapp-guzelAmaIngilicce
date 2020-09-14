@@ -55,6 +55,8 @@ class _WordsTestState extends State<WordsTest> {
 
         Navigator.pop(context);
       });
+      int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 60 * 2;
+
     return Scaffold(
         appBar: AppBar(),
         body:Container(
@@ -64,8 +66,13 @@ class _WordsTestState extends State<WordsTest> {
             children: <Widget>[
               SizedBox(
                 height: 50,
-                child: Text("Test"),
+                child:CountdownTimer(endTime: endTime,
+                  onEnd: (){
+                    print("Game Over");
+                  },
+                ),
               ),
+
                 SizedBox(
                   height: 200.0,
                   child: RaisedButton(
