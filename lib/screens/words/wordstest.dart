@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/user.dart';
 import 'package:guzel_ama_ingilicce/screens/authenticate/register.dart';
@@ -41,14 +40,14 @@ void createWordData(String enValue,String trValue )
 
   wordList.forEach((element) {
     if(element.dataEN==wordNew.dataEN)
-      {
-        print("Duplicate record: "+element.dataEN);
-        duplicate=true;
-        return;
-      }
+    {
+      print("Duplicate record: "+element.dataEN);
+      duplicate=true;
+      return;
+    }
   });
   if(!duplicate)
-  wordList.add(wordNew);
+    wordList.add(wordNew);
 
 }
 Future <void> getWordList(int rnd) async
@@ -58,7 +57,7 @@ Future <void> getWordList(int rnd) async
         .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
         .get()
         .then((value)  {
-       createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+      createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
     }
     );
   }
@@ -72,15 +71,15 @@ Future <void> getRandomWordList() async
 {
   wordList.clear();
   for(int _index=0;wordList.length<=2;_index++)
-    {
-      Random random = new Random();
-      int randomNumber = random.nextInt(15) + 1;
-      await getWordList(randomNumber);
-    }
+  {
+    Random random = new Random();
+    int randomNumber = random.nextInt(15) + 1;
+    await getWordList(randomNumber);
+  }
   if(wordList==null ||wordList.length<2)
-    {
-      print("Not enough word data");
-    }
+  {
+    print("Not enough word data");
+  }
 
 }
 void printList()
@@ -93,115 +92,134 @@ void printList()
 }
 class _WordsTestState extends State<WordsTest> {
   bool pressAttention = false;
+  bool pressAttention2 = false;
+  bool pressAttention3 = false;
 
 
-  
+
   @override
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body:Container(
-        color: Colors.white,
-        child:ListView(
-          padding: new EdgeInsets.all(1.0),
-          children: <Widget>[
+        appBar: AppBar(),
+        body:Container(
+          color: Colors.white,
+          child:ListView(
+            padding: new EdgeInsets.all(1.0),
+            children: <Widget>[
 
-            SizedBox(
-              height: 200.0,
-              child:RaisedButton(
-
-                color:Colors.white,
-                onPressed: () async{
-                  await getRandomWordList();
-                  printList();
-                  setState(() {
-                    optionA=wordList[0].dataEN.toString();
-                    optionB=wordList[1].dataEN.toString();
-                    optionC=wordList[2].dataEN.toString();
-                  });
-                },
-              ),
-            ),
-
-            Container(
-              decoration:
-              BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-              ),
-              child: SizedBox(
-                height: 100,
-                child: RaisedButton(
-                  child: Text(optionA),
-                  color: pressAttention ? Colors.grey : Colors.blue,
-                  onPressed: () async{
-                    await getRandomWordList();
-                    printList();
-
-                      setState(() {
-                        pressAttention = !pressAttention;
-                      });
-                    sleep1();
-                  },
-                ),
-              ),
-            ),
-            Container(
-              decoration:
-              BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-              ),
-              child: SizedBox(
-                height: 100,
-                child: RaisedButton(
-                  child: Text(optionB),
-                  color:Colors.white,
-                  onPressed: () async{
-                    await getRandomWordList();
-                    printList();
-                      setState(() {
-
-                      });
-                  },
-                ),
-              ),
-            ),
-            Container(
-              decoration:
-              BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-              ),
-              child: SizedBox(
-                height: 100,
-                child: RaisedButton(
-                  child: Text(optionC),
+              SizedBox(
+                height: 200.0,
+                child:RaisedButton(
+                  child:Text(wordList[0].dataTR.toString()),
                   color:Colors.white,
                   onPressed: () async{
                     await getRandomWordList();
                     printList();
                     setState(() {
+                      optionA=wordList[0].dataEN.toString();
+                      optionB=wordList[1].dataEN.toString();
+                      optionC=wordList[2].dataEN.toString();
 
+                      pressAttention=true;
+                      pressAttention2 = true;
+                      pressAttention3=true;
                     });
                   },
                 ),
               ),
-            ),
+
+              Container(
+                decoration:
+                BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                ),
+                child: SizedBox(
+                  height: 100,
+                  child: RaisedButton(
+                    child: Text(optionA),
+                    color: pressAttention ? Colors.blue : Colors.grey,
+                    onPressed: () async{
+                      //await getRandomWordList();
+                      printList();
+
+                      setState(() {
+                        pressAttention = !pressAttention;
+                        pressAttention2=true;
+                        pressAttention3=true;
+
+                      });
+                      sleep1();
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                decoration:
+                BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                ),
+                child: SizedBox(
+                  height: 100,
+                  child: RaisedButton(
+                    child: Text(optionB),
+                    color: pressAttention2 ? Colors.blue : Colors.grey,
+                    onPressed: () async{
+                      //await getRandomWordList();
+                      printList();
+
+                      setState(() {
+
+                        pressAttention2 = !pressAttention2;
+                        pressAttention=true;
+                        pressAttention3=true;
+                      });
+                      sleep1();
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                decoration:
+                BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+                ),
+                child: SizedBox(
+                  height: 100,
+                  child: RaisedButton(
+                    child: Text(optionC),
+                    color: pressAttention3 ? Colors.blue : Colors.grey,
+                    onPressed: () async{
+                      //await getRandomWordList();
+                      printList();
+
+                      setState(()  {
+
+                        pressAttention=true;
+                        pressAttention2 =true;
+                        pressAttention3=!pressAttention3;
+                      });
+                      sleep1();
+                    },
+                  ),
+                ),
+              ),
 
 
 
 
-          ],
-        ),
-      )
+            ],
+          ),
+        )
 
     );
   }
