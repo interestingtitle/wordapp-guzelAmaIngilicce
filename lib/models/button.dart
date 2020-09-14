@@ -1,5 +1,4 @@
-import 'dart:io';
 
-main() {
-  sleep(const Duration(seconds:1));
+Future sleep1() {
+  return new Future.delayed(const Duration(seconds: 2), () => "2");
 }

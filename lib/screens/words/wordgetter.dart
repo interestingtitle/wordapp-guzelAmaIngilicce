@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
-
-
+import 'package:toast/toast.dart';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
+int wordListCount=0;
+String chosenWord="";
 void setOptionColors()
 {
-  Color colorQuestion=Colors.amber;
-  Color colorA=Colors.grey;
-  Color colorB=Colors.grey;
-  Color colorC=Colors.grey;
+  Color colorQuestion=Colors.lightGreen[200];
+  Color colorA=Colors.grey[150];
+  Color colorB=Colors.grey[150];
+  Color colorC=Colors.grey[150];
+  Color colorD=Colors.lightBlue;
   optionColorList.clear();
   optionColorList.add(colorQuestion);
   optionColorList.add(colorA);
   optionColorList.add(colorB);
   optionColorList.add(colorC);
-
-
+  optionColorList.add(colorD);
 }
 class WordData
 {
@@ -45,43 +46,62 @@ void createWordData(String enValue,String trValue )
     }
   });
   if(!duplicate)
-    wordList.add(wordNew);
-
-}
-Future <void> getWordList(int rnd) async
-{
-  try{
-    if(wordList.length<3)
-      {
-        await FirebaseFirestore.instance
-            .collection('wordlist').doc('category').collection('fruits').doc(rnd.toString())
-            .get()
-            .then((value)  {
-          createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+    {
+      if(wordListCount<=3)
+        {
+          wordList.add(wordNew);
+          wordListCount++;
         }
-        );
-      }
 
-  }
-  catch (e)
-  {
-    print("Cannot get data");
-  }
+      //print("List count:" + wordListCount.toString());
+    }
+
 
 }
+int randomInt()
+{
+      var random=new Random();
+      int rnd = random.nextInt(3)+0;
+      //print(rnd.toString());
+      chosenWord=wordList[rnd].dataEN;
+      print("Chosen word: " +chosenWord);
+      return rnd;
+
+}
+
+
 Future <void> getRandomWordList() async
 {
   wordList.clear();
-  for(int _index=0;wordList.length<=2;_index++)
-  {
+  wordListCount=0;
+  for(int i=0;wordList.length<=2;i++) {
     Random random = new Random();
     int randomNumber = random.nextInt(24) + 1;
-    await getWordList(randomNumber);
+    await FirebaseFirestore.instance
+        .collection('wordlist').doc('category').collection('fruits').doc(randomNumber.toString())
+        .get()
+        .then((value)  {
+          //print("Getting data from server: "+i.toString());
+      createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
+    }
+    );
   }
-  if(wordList==null ||wordList.length<2)
-  {
-    print("Not enough word data");
+  //print(wordList);
+  var random = new Random();
+
+  // Go through all elements.
+  for (var i =2; i > 0; i--) {
+
+    // Pick a pseudorandom number according to the list length
+    var n = random.nextInt(i + 1);
+    var temp = wordList[i];
+    //print("Temp "+temp.toString());
+    wordList[i] = wordList[n];
+    wordList[n] = temp;
+
   }
+
+  //print(wordList);
 
 }
 void printList()
@@ -92,54 +112,4 @@ void printList()
     print("-->"+element.dataTR + " " + element.dataEN);
   });
 }
-void getAnswer(int optionIndex,String word) async
-{
-  optionColorList[1]=Colors.grey;
-  optionColorList[2]=Colors.grey;
-  optionColorList[3]=Colors.grey;
-  //print(optionIndex.toString()+word);
-  if(wordList[0].dataEN.toString()== word)
-  {
-    print("Correct Answer");
-    optionColorList[optionIndex]=Colors.green;
-    for(int i=1;i<=3;i++)
-    {
-      if(optionColorList[i]==Colors.green)
-      {
 
-      }
-      else
-      {
-        optionColorList[i]=Colors.grey;
-      }
-
-    }
-    //print(optionIndex);
-
-  }
-  else if(word=="none")
-  {
-    optionColorList[1]=Colors.grey;
-    optionColorList[2]=Colors.grey;
-    optionColorList[3]=Colors.grey;
-  }
-  else
-  {
-    print("Wrong Answer");
-    optionColorList[optionIndex]=Colors.red;
-    for(int i=1;i<=3;i++)
-    {
-      if(optionColorList[i]==Colors.red && optionColorList[optionIndex]==Colors.red)
-      {
-
-      }
-      else
-      {
-        optionColorList[i]=Colors.grey;
-      }
-
-    }
-    //print(optionIndex);
-  }
-
-}
