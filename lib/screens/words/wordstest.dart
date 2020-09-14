@@ -1,9 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:guzel_ama_ingilicce/models/datasetter.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/models/button.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
-
+import '';
 
 
 
@@ -18,7 +19,8 @@ class _WordsTestState extends State<WordsTest> {
   bool pressAttention = false;
   bool pressAttention2 = false;
   bool pressAttention3 = false;
-
+  List<String> list1 = ["bisiklet","gemi"];
+  List<String> list2 = ["cycle","ship"];
 
 
   @override
@@ -49,6 +51,7 @@ class _WordsTestState extends State<WordsTest> {
                       pressAttention2 = false;
                       pressAttention3=false;
                     });
+                    await setterForData(list1, list2);
                   },
                 ),
               ),
