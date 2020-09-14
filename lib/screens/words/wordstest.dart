@@ -13,7 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
-
+import 'package:guzel_ama_ingilicce/models/button.dart';
 
 List <WordData> wordList=new List();
 class WordData
@@ -140,9 +140,11 @@ class _WordsTestState extends State<WordsTest> {
                   onPressed: () async{
                     await getRandomWordList();
                     printList();
+
                       setState(() {
                         pressAttention = !pressAttention;
                       });
+                    sleep1();
                   },
                 ),
               ),
