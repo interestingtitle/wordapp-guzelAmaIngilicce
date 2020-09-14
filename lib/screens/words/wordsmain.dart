@@ -29,15 +29,20 @@ class _WordsState extends State<Words> {
               color:Colors.white,
               onPressed: () async{
                 await getRandomWordList();
+                try{
+                  optionA=wordList[0].dataEN.toString();
+                  optionB=wordList[1].dataEN.toString();
+                  optionC=wordList[2].dataEN.toString();
+                  optionStatus="Seçim yapınız.";
+                  setOptionColors();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WordsTest()),
+                  );
+                }
+                catch (e) {
 
-                optionA=wordList[0].dataEN.toString();
-                optionB=wordList[1].dataEN.toString();
-                optionC=wordList[2].dataEN.toString();
-                setOptionColors();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WordsTest()),
-                );
+                }
               },
             ),
           ),
