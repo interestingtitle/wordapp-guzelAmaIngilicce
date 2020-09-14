@@ -1,4 +1,4 @@
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/models/button.dart';
@@ -63,10 +63,17 @@ void getAnswer(int optionIndex,String word) async
 
 }
 
+
+
 class _WordsTestState extends State<WordsTest> {
   bool pressAttention = false;
   bool pressAttention2 = false;
   bool pressAttention3 = false;
+
+
+
+
+
   @override
 
   Widget build(BuildContext context) {
@@ -119,19 +126,27 @@ class _WordsTestState extends State<WordsTest> {
                       //await getRandomWordList();
                       printList();
                       await getRandomWordList();
+                      printList();
                       setState(() {
-
                         optionA=wordList[0].dataEN.toString();
                         optionB=wordList[1].dataEN.toString();
                         optionC=wordList[2].dataEN.toString();
 
-                        pressAttention = true;
-                        pressAttention2=false;
-                        pressAttention3=false;
-                        getAnswer(1,optionA);
 
+                        getAnswer(1, "optionA");
+                      });
+
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          optionColorList[1]=Colors.grey;
+                          optionColorList[2]=Colors.grey;
+                          optionColorList[3]=Colors.grey;
+                          print("anana atlayam");
+                        });
 
                       });
+
+
 
 
                     },
@@ -158,12 +173,10 @@ class _WordsTestState extends State<WordsTest> {
                       setState(() {
 
 
-                        pressAttention=false;
-                        pressAttention2 = true;
-                        pressAttention3=false;
+
                         getAnswer(2,optionB);
                       });
-                      sleep1();
+
                     },
                   ),
                 ),
@@ -187,12 +200,10 @@ class _WordsTestState extends State<WordsTest> {
 
                       setState(()  {
 
-                        pressAttention=false;
-                        pressAttention2 =false;
-                        pressAttention3=true;
+
                         getAnswer(3,optionC);
                       });
-                      sleep1();
+
                     },
                   ),
                 ),
