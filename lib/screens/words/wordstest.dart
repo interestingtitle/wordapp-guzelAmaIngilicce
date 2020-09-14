@@ -115,18 +115,25 @@ class _WordsTestState extends State<WordsTest> {
                     child: Text(optionA),
                     color:optionColorList[1],
 
-                    onPressed: () {
+                    onPressed: () async{
                       //await getRandomWordList();
                       printList();
-
+                      await getRandomWordList();
                       setState(() {
+
+                        optionA=wordList[0].dataEN.toString();
+                        optionB=wordList[1].dataEN.toString();
+                        optionC=wordList[2].dataEN.toString();
+
                         pressAttention = true;
                         pressAttention2=false;
                         pressAttention3=false;
                         getAnswer(1,optionA);
 
+
                       });
-                      //sleep1();
+
+
                     },
                   ),
                 ),

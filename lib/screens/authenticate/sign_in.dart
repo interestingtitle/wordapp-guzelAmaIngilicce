@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 20.0,),
+                SizedBox(height: 70.0,),
                 TextFormField(
 
                   decoration: textInputDecoration.copyWith(hintText: "Email"),
