@@ -147,7 +147,7 @@ class _WordsTestState extends State<WordsTest> {
                       printList();
 
                       setState(() {
-                        pressAttention = !pressAttention;
+                        pressAttention = false;
                         pressAttention2=true;
                         pressAttention3=true;
 
@@ -176,8 +176,9 @@ class _WordsTestState extends State<WordsTest> {
 
                       setState(() {
 
-                        pressAttention2 = !pressAttention2;
+
                         pressAttention=true;
+                        pressAttention2 = false;
                         pressAttention3=true;
                       });
                       sleep1();
