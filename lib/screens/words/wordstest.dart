@@ -19,7 +19,7 @@ void getAnswer(int optionIndex,String word) async
       print(optionIndex.toString()+word);
       if(wordList[0].dataEN.toString()== word)
         {
-          print("Correct Answer");
+          print("Correct Answer" + "word");
           optionColorList[optionIndex]=Colors.green;
           for(int i=1;i<=3;i++)
             {
@@ -123,30 +123,38 @@ class _WordsTestState extends State<WordsTest> {
                     color:optionColorList[1],
 
                     onPressed: () async{
-                      //await getRandomWordList();
-                      printList();
                       await getRandomWordList();
                       printList();
+                      optionA=wordList[0].dataEN.toString();
+                      optionB=wordList[1].dataEN.toString();
+                      optionC=wordList[2].dataEN.toString();
+
                       setState(() {
-                        optionA=wordList[0].dataEN.toString();
-                        optionB=wordList[1].dataEN.toString();
-                        optionC=wordList[2].dataEN.toString();
+                        
+                        getAnswer(1, optionA);
 
 
-                        getAnswer(1, "optionA");
+
+
+
+                        printList();
                       });
 
-                      await Future.delayed(const Duration(seconds: 5), () {
+                      await Future.delayed(const Duration(seconds: 2), () {
                         setState(() {
                           optionColorList[1]=Colors.grey;
                           optionColorList[2]=Colors.grey;
                           optionColorList[3]=Colors.grey;
                           print("anana atlayam");
+
+
                         });
 
                       });
 
+                      printList();
 
+                      printList();
 
 
                     },

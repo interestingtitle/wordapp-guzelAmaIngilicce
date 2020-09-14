@@ -1,17 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:guzel_ama_ingilicce/models/user.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
+  final gooleSignIn = GoogleSignIn();
   //making firebaseuser to custom user
   CUser _userFromFirebaseUser(User user){
     if(user != null)
       return CUser(uid: user.uid);
     else
       return null;
+  }
+
+  //google sign in method
+ Future googleSignIn() async{
+    GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
+    if(googleSignInAccount != null){
+      GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      AuthCredential credential = GoogleAuthProvider.credential(idToken: googleSignInAuthentication.idToken,accessToken: googleSignInAuthentication.accessToken);
+      UserCredential result = await _firebaseAuth.signInWithCredential(credential);
+      User user = await _firebaseAuth.currentUser;
+      return _userFromFirebaseUser(user);
+    }
   }
 
   //sign out

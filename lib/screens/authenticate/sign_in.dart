@@ -106,6 +106,30 @@ class _SignInState extends State<SignIn> {
 
                   },
                 ),
+                RaisedButton(
+                  color: Colors.blue[800],
+                  child: Text(
+                    "Sign In With Google",
+                    style: TextStyle(
+                        color: Colors.white
+                    ),
+                  ),
+                  onPressed: () async{
+                    {
+                      setState(() {
+                        loading = true;
+                      });
+                      dynamic result = await _auth.googleSignIn();
+                      if(result == null){
+                        setState(() {
+                          loading = false;
+
+                        });
+                      }
+                    }
+
+                  },
+                ),
                 SizedBox(height: 20.0,),
                 Text(
                   error,
