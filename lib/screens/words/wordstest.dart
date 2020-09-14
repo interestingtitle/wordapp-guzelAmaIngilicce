@@ -13,9 +13,6 @@ class WordsTest extends StatefulWidget {
 }
 
 class _WordsTestState extends State<WordsTest> {
-  bool pressAttention = false;
-  bool pressAttention2 = false;
-  bool pressAttention3 = false;
   @override
 
   Widget build(BuildContext context) {
@@ -40,9 +37,6 @@ class _WordsTestState extends State<WordsTest> {
                       optionB=wordList[1].dataEN.toString();
                       optionC=wordList[2].dataEN.toString();
 
-                      pressAttention=false;
-                      pressAttention2 = false;
-                      pressAttention3=false;
                         getAnswer(0, "none");
 
                     });
@@ -68,9 +62,6 @@ class _WordsTestState extends State<WordsTest> {
                     onPressed: () async{
 
                       setState(() {
-                        pressAttention = true;
-                        pressAttention2=false;
-                        pressAttention3=false;
                         getAnswer(1,optionA);
 
 
@@ -101,9 +92,6 @@ class _WordsTestState extends State<WordsTest> {
                       setState(() {
 
 
-                        pressAttention=false;
-                        pressAttention2 = true;
-                        pressAttention3=false;
                         getAnswer(2,optionB);
                       });
                       sleep1();
@@ -129,10 +117,6 @@ class _WordsTestState extends State<WordsTest> {
                       //printList();
 
                       setState(()  {
-
-                        pressAttention=false;
-                        pressAttention2 =false;
-                        pressAttention3=true;
                         getAnswer(3,optionC);
                       });
                       sleep1();
