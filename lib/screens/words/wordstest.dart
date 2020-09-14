@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
@@ -10,9 +11,12 @@ class WordsTest extends StatefulWidget {
 
   @override
   _WordsTestState createState() => _WordsTestState();
+
 }
 
 class _WordsTestState extends State<WordsTest> {
+
+
   void getAnswer(int optionIndex,String word) async
   {
     optionColorList[1] = Colors.grey;
@@ -42,8 +46,14 @@ class _WordsTestState extends State<WordsTest> {
       optionColorList[4]=Colors.red;
     }
   }
+
     @override
   Widget build(BuildContext context) {
+
+      Timer(Duration(seconds: 120), () {
+
+        Navigator.pop(context);
+      });
     return Scaffold(
         appBar: AppBar(),
         body:Container(
@@ -51,6 +61,10 @@ class _WordsTestState extends State<WordsTest> {
           child:ListView(
             padding: new EdgeInsets.all(1.0),
             children: <Widget>[
+              SizedBox(
+                height: 50,
+                child: Text("Test"),
+              ),
                 SizedBox(
                   height: 200.0,
                   child: RaisedButton(
@@ -64,13 +78,12 @@ class _WordsTestState extends State<WordsTest> {
                         optionB = wordList[1].dataEN.toString();
                         optionC = wordList[2].dataEN.toString();
                         getAnswer(0, "none");
+
                       });
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+
                 Container(
                   decoration:
                   BoxDecoration(
