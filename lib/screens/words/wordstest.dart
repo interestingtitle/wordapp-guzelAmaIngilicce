@@ -11,57 +11,6 @@ class WordsTest extends StatefulWidget {
   @override
   _WordsTestState createState() => _WordsTestState();
 }
-void getAnswer(int optionIndex,String word) async
-{
-      optionColorList[1]=Colors.grey;
-      optionColorList[2]=Colors.grey;
-      optionColorList[3]=Colors.grey;
-      //print(optionIndex.toString()+word);
-      if(wordList[0].dataEN.toString()== word)
-        {
-          print("Correct Answer");
-          optionColorList[optionIndex]=Colors.green;
-          for(int i=1;i<=3;i++)
-            {
-              if(optionColorList[i]==Colors.green)
-                {
-
-                }
-              else
-                {
-                  optionColorList[i]=Colors.grey;
-                }
-
-            }
-          //print(optionIndex);
-
-        }
-      else if(word=="none")
-        {
-          optionColorList[1]=Colors.grey;
-          optionColorList[2]=Colors.grey;
-          optionColorList[3]=Colors.grey;
-        }
-      else
-        {
-          print("Wrong Answer");
-          optionColorList[optionIndex]=Colors.red;
-          for(int i=1;i<=3;i++)
-          {
-            if(optionColorList[i]==Colors.red && optionColorList[optionIndex]==Colors.red)
-            {
-
-            }
-            else
-            {
-              optionColorList[i]=Colors.grey;
-            }
-
-          }
-          print(optionIndex);
-        }
-
-}
 
 class _WordsTestState extends State<WordsTest> {
   bool pressAttention = false;
@@ -147,7 +96,7 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[2],
                     onPressed: () async{
                       //await getRandomWordList();
-                      printList();
+                      //printList();
 
                       setState(() {
 
@@ -177,7 +126,7 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[3],
                     onPressed: () async{
                       //await getRandomWordList();
-                      printList();
+                      //printList();
 
                       setState(()  {
 
