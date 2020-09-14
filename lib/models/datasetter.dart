@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'dart:math';
-
+//import 'package:flutter/material.dart';
 
 
 Future setterForData( var datalistTR, var datalistEN) async {
@@ -28,6 +26,6 @@ Future deleteData(String collectionName) async{
   FirebaseFirestore.instance.collection("wordlist").doc("category").collection("vehicles").get().then((snapshot) {
       for (DocumentSnapshot ds in snapshot.docs){
       ds.reference.delete();
-  };
+  }
   });
 }

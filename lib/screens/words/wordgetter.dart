@@ -27,7 +27,7 @@ class WordData
   WordData({this.dataEN,this.dataTR});
   @override
   String toString() {
-    return 'WordData: {dataEN: ${dataEN}, dataTR: ${dataTR}}';
+    return 'WordData: {dataEN: $dataEN, dataTR: $dataTR}';
   }
 }
 

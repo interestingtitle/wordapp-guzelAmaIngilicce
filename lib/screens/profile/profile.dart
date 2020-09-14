@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/models/user.dart';
 import 'package:guzel_ama_ingilicce/screens/profile/profilesettings.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
-import 'package:provider/provider.dart';
+//import 'package:guzel_ama_ingilicce/services/auth.dart';
 
 
 class Profile extends StatefulWidget {
@@ -16,7 +14,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final AuthService _auth = AuthService();
+  //final AuthService _auth = AuthService();
 
 
   String a = "ahmet";
@@ -29,8 +27,8 @@ class _ProfileState extends State<Profile> {
 //  }
     @override
     Widget build(BuildContext context) {
-      final user = Provider.of<CUser>(context);
-      final fruits = Provider.of<QuerySnapshot>(context);
+      //final user = Provider.of<CUser>(context);
+      //final fruits = Provider.of<QuerySnapshot>(context);
       return Container(
 
         child:ListView(
