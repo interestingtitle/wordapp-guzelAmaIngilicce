@@ -13,12 +13,28 @@ class WordsTest extends StatefulWidget {
 }
 void getAnswer(int optionIndex,String word) async
 {
-
+      optionColorList[1]=Colors.grey;
+      optionColorList[2]=Colors.grey;
+      optionColorList[3]=Colors.grey;
       print(optionIndex.toString()+word);
       if(wordList[0].dataEN.toString()== word)
         {
           print("Correct Answer");
           optionColorList[optionIndex]=Colors.green;
+          for(int i=1;i<=3;i++)
+            {
+              if(optionColorList[i]==Colors.green)
+                {
+
+                }
+              else
+                {
+                  optionColorList[i]=Colors.grey;
+                }
+
+            }
+          print(optionIndex);
+
         }
       else if(word=="none")
         {
@@ -30,6 +46,19 @@ void getAnswer(int optionIndex,String word) async
         {
           print("Wrong Answer");
           optionColorList[optionIndex]=Colors.red;
+          for(int i=1;i<=3;i++)
+          {
+            if(optionColorList[i]==Colors.red && optionColorList[optionIndex]==Colors.red)
+            {
+
+            }
+            else
+            {
+              optionColorList[i]=Colors.grey;
+            }
+
+          }
+          print(optionIndex);
         }
 
 }
@@ -53,7 +82,7 @@ class _WordsTestState extends State<WordsTest> {
                 height: 200.0,
                 child:RaisedButton(
                   child:Text(wordList[0].dataTR.toString()),
-                  color:Colors.white,
+                  color:optionColorList[0],
                   onPressed: () async{
                     await getRandomWordList();
                     printList();
@@ -65,7 +94,7 @@ class _WordsTestState extends State<WordsTest> {
                       pressAttention=false;
                       pressAttention2 = false;
                       pressAttention3=false;
-
+                        getAnswer(0, "none");
                     });
 
                   },
