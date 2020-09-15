@@ -59,22 +59,22 @@ class _WordsTestState extends State<WordsTest> {
 
     return Scaffold(
         appBar: AppBar(),
-        body:Container(
-          color: Colors.white,
-          child:ListView(
-            padding: new EdgeInsets.all(1.0),
+        body:Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+
             children: <Widget>[
-              SizedBox(
-                height: 50,
-                child:CountdownTimer(endTime: endTime,
+              Expanded(
+                flex: 2,
+                child: CountdownTimer(endTime: endTime,
                   onEnd: (){
                     print("Game Over");
                   },
                 ),
               ),
 
-                SizedBox(
-                  height: 200.0,
+                Expanded(
+                  flex: 10,
                   child: RaisedButton(
                     child: Text(wordList[randomInt()].dataTR.toString()),
                     color: optionColorList[0],
@@ -93,112 +93,89 @@ class _WordsTestState extends State<WordsTest> {
                 ),
 
 
-                SizedBox(
-                  height: 75,
-                ),
 
 
-                Container(
-                  child: SizedBox(
-                    height: 75,
-                    child: RaisedButton(
-                      child: Text(optionA),
-                      color: optionColorList[1],
-                      shape: StadiumBorder(),
-                      onPressed: () async {
-                        getAnswer(1, optionA);
-                        await getRandomWordList();
-                        //printList();
-                        //await getRandomWordList();
-                        //printList();
-                        setState(() {
-                          optionA = wordList[0].dataEN.toString();
-                          optionB = wordList[1].dataEN.toString();
-                          optionC = wordList[2].dataEN.toString();
 
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                    SizedBox(
-                      height: 5
-                    ),
-                Container(
-                  child: SizedBox(
-                    height: 75,
-                    child: RaisedButton(
-                      child: Text(optionB),
-                      color: optionColorList[3],
-                      shape: StadiumBorder(),
-                      onPressed: () async {
-                        getAnswer(2, optionB);
-                        await getRandomWordList();
-                        setState(() {
-                          optionA = wordList[0].dataEN.toString();
-                          optionB = wordList[1].dataEN.toString();
-                          optionC = wordList[2].dataEN.toString();
+                Expanded(
+                  flex: 5,
+                  child: RaisedButton(
+                    child: Text(optionA),
+                    color: optionColorList[1],
+                    shape: StadiumBorder(),
+                    onPressed: () async {
+                      getAnswer(1, optionA);
+                      await getRandomWordList();
+                      //printList();
+                      //await getRandomWordList();
+                      //printList();
+                      setState(() {
+                        optionA = wordList[0].dataEN.toString();
+                        optionB = wordList[1].dataEN.toString();
+                        optionC = wordList[2].dataEN.toString();
 
-                        });
-                      },
-
-                    ),
+                      });
+                    },
                   ),
                 ),
 
-              SizedBox(
-                  height: 5
-              ),
+                Expanded(
+                  flex: 5,
+                  child: RaisedButton(
+                    child: Text(optionB),
+                    color: optionColorList[3],
+                    shape: StadiumBorder(),
+                    onPressed: () async {
+                      getAnswer(2, optionB);
+                      await getRandomWordList();
+                      setState(() {
+                        optionA = wordList[0].dataEN.toString();
+                        optionB = wordList[1].dataEN.toString();
+                        optionC = wordList[2].dataEN.toString();
 
+                      });
+                    },
 
-                Container(
-                  child: SizedBox(
-                    height: 75,
-                    child: RaisedButton(
-                      child: Text(optionC),
-                      color: optionColorList[3],
-                      shape: StadiumBorder(),
-                      onPressed: () async {
-                        getAnswer(3, optionC);
-                        await getRandomWordList();
-
-                        //printList();
-                        setState(() {
-                          optionA = wordList[0].dataEN.toString();
-                          optionB = wordList[1].dataEN.toString();
-                          optionC = wordList[2].dataEN.toString();
-
-                        });
-                      },
-                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  decoration:
-                  BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
-                  child: SizedBox(
-                    height: 150,
-                    child: RaisedButton(
-                      child: Text(optionStatus),
-                      color: optionColorList[4],
-                      onPressed: () {
-                        //printList();
-                      },
 
-                    ),
+
+
+                Expanded(
+                  flex: 5,
+                  child: RaisedButton(
+                    child: Text(optionC),
+                    color: optionColorList[3],
+                    shape: StadiumBorder(),
+                    onPressed: () async {
+                      getAnswer(3, optionC);
+                      await getRandomWordList();
+
+                      //printList();
+                      setState(() {
+                        optionA = wordList[0].dataEN.toString();
+                        optionB = wordList[1].dataEN.toString();
+                        optionC = wordList[2].dataEN.toString();
+
+                      });
+                    },
+                  ),
+                ),
+
+                Expanded(
+                  flex: 10,
+                  child: RaisedButton(
+
+                    child: Text(optionStatus),
+                    color: optionColorList[4],
+                    onPressed: () {
+                      //printList();
+                    },
+
                   ),
                 ),
 
             ],
-          ),
+
         )
 
     );

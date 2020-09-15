@@ -22,8 +22,8 @@ class AuthService {
       GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
       AuthCredential credential = GoogleAuthProvider.credential(idToken: googleSignInAuthentication.idToken,accessToken: googleSignInAuthentication.accessToken);
       UserCredential result = await _firebaseAuth.signInWithCredential(credential);
-      User user = await _firebaseAuth.currentUser;
-      await DatabaseService(uid: user.uid).updateUserData("baris", 10);
+      User user = result.user;
+      await DatabaseService(uid: user.uid).updateUserData("yeni", 10);
       return _userFromFirebaseUser(user);
     }
   }
