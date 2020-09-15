@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         seconds: 3,
         navigateAfterSeconds: new AfterSplash(),
         title: new Text('WordAPP', style: TextStyle(color: Colors.black),),
-        image: Image.asset('assets/Curve-Loading.gif',width: 500.0, height: 500.0,),
+        image: Image.asset('assets/openingscene.gif',width: 256.0, height: 256.0,),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 200.0,
