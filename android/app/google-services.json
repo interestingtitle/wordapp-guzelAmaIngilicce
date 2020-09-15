@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1096609791207-kqdo71e8f770l4dvrmtilhkicin1s6af.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.it.guzel_ama_ingilicce",
+            "certificate_hash": "3e5e253e7f6471443b79cffb099ecca47d718100"
+          }
+        },
+        {
           "client_id": "1096609791207-ptjjs2r4ojbjbu1sf1q7fe3eaf28isem.apps.googleusercontent.com",
           "client_type": 3
         }
