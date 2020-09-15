@@ -1,8 +1,6 @@
-import 'dart:async';
-import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
-import 'package:guzel_ama_ingilicce/models/button.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';

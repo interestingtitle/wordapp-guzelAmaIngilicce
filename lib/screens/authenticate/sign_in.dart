@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/screens/authenticate/register.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:guzel_ama_ingilicce/shared/constants.dart';
-
 import 'package:guzel_ama_ingilicce/shared/loading.dart';
 
 class SignIn extends StatefulWidget {

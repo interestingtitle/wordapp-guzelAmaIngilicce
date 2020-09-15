@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
-import 'package:toast/toast.dart';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();

@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
