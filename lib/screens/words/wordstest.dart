@@ -51,12 +51,6 @@ class _WordsTestState extends State<WordsTest> {
     @override
   Widget build(BuildContext context) {
 
-      Timer(Duration(seconds: 120), () {
-
-        Navigator.pop(context);
-      });
-      int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 60 * 2;
-
     return Scaffold(
         appBar: AppBar(),
         body:Column(
@@ -69,6 +63,7 @@ class _WordsTestState extends State<WordsTest> {
                 child: CountdownTimer(endTime: endTime,
                   onEnd: (){
                     print("Game Over");
+                    Navigator.of(context).pop();
                   },
                 ),
               ),

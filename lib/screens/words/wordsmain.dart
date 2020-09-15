@@ -35,6 +35,7 @@ class _WordsState extends State<Words> {
                   optionA=wordList[0].dataEN.toString();
                   optionB=wordList[1].dataEN.toString();
                   optionC=wordList[2].dataEN.toString();
+                  endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
                   optionStatus="Seçim yapınız.";
                   setOptionColors();
                   Navigator.push(

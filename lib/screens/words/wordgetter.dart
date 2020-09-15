@@ -47,7 +47,7 @@ void createWordData(String enValue,String trValue )
   });
   if(!duplicate)
     {
-      if(wordListCount<=3)
+      if(wordListCount<=2)
         {
           wordList.add(wordNew);
           wordListCount++;
