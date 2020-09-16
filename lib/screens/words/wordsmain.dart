@@ -4,7 +4,6 @@ import 'package:guzel_ama_ingilicce/models/user.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
-import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';

@@ -9,7 +9,7 @@ import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
 import 'package:guzel_ama_ingilicce/services/connectivity.dart';
-
+import 'package:data_connection_checker/data_connection_checker.dart';
 
 
 
@@ -33,42 +33,44 @@ class _WordsTestState extends State<WordsTest> {
 
   Future<void> getAnswer(int optionIndex,String word) async
   {
+    if(await DataConnectionChecker().hasConnection){
+      await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
+        currentPointForUser = value.get("userPoint").toString();
+      });
+      _currentPointForUser2 = int.parse(currentPointForUser);
 
-    await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
-      currentPointForUser = value.get("userPoint").toString();
-    });
-    _currentPointForUser2 = int.parse(currentPointForUser);
 
-
-    optionColorList[1] = Colors.grey[150];
-    optionColorList[2] = Colors.grey[150];
-    optionColorList[3] = Colors.grey[150];
-    //print(optionIndex.toString()+word);
-    if (chosenWord == word) {
-      //print("Correct Answer");
-      _currentPointForUser2= _currentPointForUser2+_additionPoint;
-      await DatabaseService(uid: _asd.uid).updateUserPoint(_currentPointForUser2);
-      Toast.show(
-          "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
-          gravity: Toast.BOTTOM);
-      optionColorList[4]=Colors.green;
-      optionStatus="İyi gidiyorsun!: "+chosenWord;
-      //print(optionIndex);
-    }
-    else if (word == "none") {
       optionColorList[1] = Colors.grey[150];
       optionColorList[2] = Colors.grey[150];
       optionColorList[3] = Colors.grey[150];
-    }
-    else {
-      //print("Wrong Answer");
-      Toast.show(
-          "Üzgünüm, yanlış cevap.", context, duration: Toast.LENGTH_SHORT,
-          gravity: Toast.BOTTOM);
-      optionStatus="Yanlış cevap: "+chosenWord;
+      //print(optionIndex.toString()+word);
+      if (chosenWord == word) {
+        //print("Correct Answer");
+        _currentPointForUser2= _currentPointForUser2+_additionPoint;
+        await DatabaseService(uid: _asd.uid).updateUserPoint(_currentPointForUser2);
+        Toast.show(
+            "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
+            gravity: Toast.BOTTOM);
+        optionColorList[4]=Colors.green;
+        optionStatus="İyi gidiyorsun!: "+chosenWord;
+        //print(optionIndex);
+      }
+      else if (word == "none") {
+        optionColorList[1] = Colors.grey[150];
+        optionColorList[2] = Colors.grey[150];
+        optionColorList[3] = Colors.grey[150];
+      }
+      else {
+        //print("Wrong Answer");
+        Toast.show(
+            "Üzgünüm, yanlış cevap.", context, duration: Toast.LENGTH_SHORT,
+            gravity: Toast.BOTTOM);
+        optionStatus="Yanlış cevap: "+chosenWord;
 
-      optionColorList[4]=Colors.red;
+        optionColorList[4]=Colors.red;
+      }
     }
+
   }
 
     @override
