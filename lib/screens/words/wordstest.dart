@@ -34,8 +34,6 @@ class _WordsTestState extends State<WordsTest> {
   Future<void> getAnswer(int optionIndex,String word) async
   {
 
-
-
     await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
       currentPointForUser = value.get("userPoint").toString();
     });

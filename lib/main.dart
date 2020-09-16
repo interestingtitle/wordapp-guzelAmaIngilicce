@@ -7,7 +7,7 @@ import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:connectivity/connectivity.dart';
-
+import 'dart:io';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +33,28 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    Widget retryConnection = FlatButton(
+      child: Text("Tekrar Dene"),
+      onPressed:  () {
+        connectivityDataGetter();
+      },
+    );
+    Widget quitApp = FlatButton(
+      child: Text("Çıkış"),
+      onPressed:  () {
+        exit(0);
+      },
+    );
+    AlertDialog buildAlertDialog(){
+      return AlertDialog(
+        title: Text("Uygulamayı Açmak İçin Lütfen İnternete Bağlanın"),
+        content: Text("Bağlantı Deneme"),
+        actions: [
+          retryConnection,
+          quitApp,
+        ],
+      );
+    }
     if(isInternetOn == true){
       return new SplashScreen(
           seconds: 5,
@@ -53,7 +75,6 @@ class _MyAppState extends State<MyApp> {
 
 void connectivityDataGetter() async{
   bool conRes = await GetConnectData(context);
-
     setState(() {
       isInternetOn = conRes;
   });
