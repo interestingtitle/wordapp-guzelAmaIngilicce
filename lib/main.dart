@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   bool isInternetOn = true;
   void initState(){
     super.initState();
-    GetConnectData();
+    connectivityDataGetter();
   }
 
 
@@ -50,19 +50,15 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  void GetConnectData() async{
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if(connectivityResult != ConnectivityResult.none)
-      {
-        setState(() {
-          isInternetOn = true;
-        });
-      }
-    else{
-      isInternetOn = false;
-    }
-  }
 
+void connectivityDataGetter() async{
+  bool conRes = await GetConnectData(context);
+
+    setState(() {
+      isInternetOn = conRes;
+  });
+
+}
 }
 
 

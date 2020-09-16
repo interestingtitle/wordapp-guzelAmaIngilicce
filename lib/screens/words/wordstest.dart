@@ -8,7 +8,7 @@ import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
-
+import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 
 
 
@@ -25,7 +25,11 @@ class _WordsTestState extends State<WordsTest> {
   int _currentPointForUser2;
   int _additionPoint = 10;
   User _asd = FirebaseAuth.instance.currentUser;
-
+  bool isInternetOn = true;
+  void initState(){
+    super.initState();
+    connectivityDataGetter();
+  }
 
   Future<void> getAnswer(int optionIndex,String word) async
   {
@@ -211,5 +215,11 @@ class _WordsTestState extends State<WordsTest> {
 
     );
   }
+  void connectivityDataGetter() async {
+    bool conRes = await GetConnectData(context);
 
+    setState(() {
+      isInternetOn = conRes;
+    });
+  }
 }
