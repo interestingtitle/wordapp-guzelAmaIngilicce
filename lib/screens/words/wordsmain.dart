@@ -4,6 +4,7 @@ import 'package:guzel_ama_ingilicce/models/user.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
+import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 
@@ -34,6 +35,7 @@ class _WordsState extends State<Words> {
                 child: Text("Play"),
                 color:Colors.white,
                 onPressed: () async{
+                  await listenConnection();
                   await getRandomWordList();
                   try{
                     optionA=wordList[0].dataEN.toString();
@@ -42,6 +44,9 @@ class _WordsState extends State<Words> {
                     endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
                     optionStatus="Seçim yapınız.";
                     setOptionColors();
+
+                    print("------------>>>");
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => WordsTest()),

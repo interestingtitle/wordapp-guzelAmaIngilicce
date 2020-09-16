@@ -6,7 +6,6 @@ import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:connectivity/connectivity.dart';
 import 'dart:io';
 
 Future<void> main() async{
@@ -27,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   void initState(){
     super.initState();
     connectivityDataGetter();
+    listenConnection();
   }
 
 
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
 
 
 void connectivityDataGetter() async{
-  bool conRes = await GetConnectData(context);
+  bool conRes = await getConnectData(context);
     setState(() {
       isInternetOn = conRes;
   });

@@ -214,7 +214,7 @@ class _WordsTestState extends State<WordsTest> {
     );
   }
   void connectivityDataGetter() async {
-    bool conRes = await GetConnectData(context);
+    bool conRes = await getConnectData(context);
 
     setState(() {
       isInternetOn = conRes;
