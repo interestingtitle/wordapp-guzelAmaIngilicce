@@ -6,7 +6,6 @@ Future <void> listenConnection() async {
   // Simple check to see if we have internet
   print("The statement 'this machine is connected to the Internet' is: ");
   print(await DataConnectionChecker().hasConnection);
-  // returns a bool
 
   // We can also get an enum instead of a bool
   print("Current status: ${await DataConnectionChecker().connectionStatus}");

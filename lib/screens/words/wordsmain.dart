@@ -7,7 +7,7 @@ import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
-
+import 'package:data_connection_checker/data_connection_checker.dart';
 class Words extends StatefulWidget {
   @override
   _WordsState createState() => _WordsState();
@@ -35,26 +35,30 @@ class _WordsState extends State<Words> {
                 child: Text("Play"),
                 color:Colors.white,
                 onPressed: () async{
-                  await listenConnection();
-                  await getRandomWordList();
-                  try{
-                    optionA=wordList[0].dataEN.toString();
-                    optionB=wordList[1].dataEN.toString();
-                    optionC=wordList[2].dataEN.toString();
-                    endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
-                    optionStatus="Seçim yapınız.";
-                    setOptionColors();
+                  print(await DataConnectionChecker().hasConnection);
+                  if(await DataConnectionChecker().hasConnection)
+                    {
+                      await getRandomWordList();
+                      try{
+                        optionA=wordList[0].dataEN.toString();
+                        optionB=wordList[1].dataEN.toString();
+                        optionC=wordList[2].dataEN.toString();
+                        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
+                        optionStatus="Seçim yapınız.";
+                        setOptionColors();
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => WordsTest()),
-                    );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => WordsTest()),
+                        );
 
 
-                  }
-                  catch (e) {
+                      }
+                      catch (e) {
 
-                  }
+                      }
+                    }
+
                 },
               ),
             ),
