@@ -7,11 +7,25 @@ class DatabaseService {
   final CollectionReference userCollection = FirebaseFirestore.instance.collection("users");
   final CollectionReference wordlistCollection = FirebaseFirestore.instance.collection("wordlist").doc("category").collection("fruits");
   final DocumentReference fruitDocument = FirebaseFirestore.instance.collection("wordlist").doc("category").collection("fruits").doc("1");
+
   Future updateUserData(String userName, int userPoint) async{
-    return await userCollection.doc(uid).set({
-      "userName": userName,
-      "userPoint": userPoint,
-    });
+
+//    await FirebaseFirestore.instance.collection("users").doc(uid).get().then((value){
+//    if(!value.exists){
+//      return userCollection.doc(uid).set({
+//        "userName": userName,
+//        "userPoint": userPoint
+//      });
+//    }}
+//    );
+      final snapshot = await FirebaseFirestore.instance.collection("users").doc(uid).get();
+      if(snapshot == null || !snapshot.exists){
+        return userCollection.doc(uid).set({
+          "userName": userName,
+          "userPoint": userPoint,
+        });
+      }
+
   }
   Future updateUserPoint(int userPoint) async{
     return await userCollection.doc(uid).update({
