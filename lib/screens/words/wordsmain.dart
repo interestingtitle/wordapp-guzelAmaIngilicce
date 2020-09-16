@@ -45,8 +45,6 @@ class _WordsState extends State<Words> {
                     optionStatus="Seçim yapınız.";
                     setOptionColors();
 
-                    print("------------>>>");
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => WordsTest()),
