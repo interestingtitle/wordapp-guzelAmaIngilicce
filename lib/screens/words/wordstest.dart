@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:guzel_ama_ingilicce/screens/words/pointChanges.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
@@ -22,16 +23,20 @@ class WordsTest extends StatefulWidget {
 
 class _WordsTestState extends State<WordsTest> {
   String currentPointForUser;
-  int currentPointForUser2;
+  int _currentPointForUser2;
+  int _additionPoint = 10;
   User _asd = FirebaseAuth.instance.currentUser;
 
 
   Future<void> getAnswer(int optionIndex,String word) async
   {
+
+
+
     await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
       currentPointForUser = value.get("userPoint").toString();
     });
-    currentPointForUser2 = int.parse(currentPointForUser);
+    _currentPointForUser2 = int.parse(currentPointForUser);
 
 
     optionColorList[1] = Colors.grey[150];
@@ -40,7 +45,8 @@ class _WordsTestState extends State<WordsTest> {
     //print(optionIndex.toString()+word);
     if (chosenWord == word) {
       //print("Correct Answer");
-      await DatabaseService(uid: _asd.uid).updateUserPoint(currentPointForUser2+10);
+      _currentPointForUser2= _currentPointForUser2+_additionPoint;
+      await DatabaseService(uid: _asd.uid).updateUserPoint(_currentPointForUser2);
       Toast.show(
           "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
           gravity: Toast.BOTTOM);
@@ -75,12 +81,27 @@ class _WordsTestState extends State<WordsTest> {
 
             children: <Widget>[
               Expanded(
-                flex: 2,
-                child: CountdownTimer(endTime: endTime,
-                  onEnd: (){
-                    print("Game Over");
-                    Navigator.of(context).pop();
-                  },
+                flex: 4,
+                child: Row(
+                  children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: CountdownTimer(endTime: endTime,
+                        onEnd: (){
+                          print("Game Over");
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ),
+                  ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: pointChanges(_currentPointForUser2),
+                      ),
+                    )
+                  ],
                 ),
               ),
 
