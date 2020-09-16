@@ -36,6 +36,7 @@ dependencies:
   splashscreen: ^1.2.0
   flutter_countdown_timer: ^1.2.0
   google_sign_in: ^4.5.3
+  connectivity: ^0.4.9+2
 
 dev_dependencies:
   flutter_test:

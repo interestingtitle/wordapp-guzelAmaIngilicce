@@ -2,15 +2,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:guzel_ama_ingilicce/screens/words/pointChanges.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
-import 'package:provider/provider.dart';
-import 'package:guzel_ama_ingilicce/models/user.dart';
+
+
 
 
 
