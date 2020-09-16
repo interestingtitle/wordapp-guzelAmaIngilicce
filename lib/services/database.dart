@@ -13,6 +13,12 @@ class DatabaseService {
       "userPoint": userPoint,
     });
   }
+  Future updateUserPoint(int userPoint) async{
+    return await userCollection.doc(uid).update({
+
+      "userPoint": userPoint,
+    });
+  }
 
   Stream<QuerySnapshot> get users{
     return userCollection.snapshots();

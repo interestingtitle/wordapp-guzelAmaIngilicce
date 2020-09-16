@@ -1,9 +1,17 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/variables.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
+import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
+import 'package:provider/provider.dart';
+import 'package:guzel_ama_ingilicce/models/user.dart';
+
+
 
 class WordsTest extends StatefulWidget {
 
@@ -13,16 +21,26 @@ class WordsTest extends StatefulWidget {
 }
 
 class _WordsTestState extends State<WordsTest> {
+  String currentPointForUser;
+  int currentPointForUser2;
+  User _asd = FirebaseAuth.instance.currentUser;
 
 
-  void getAnswer(int optionIndex,String word) async
+  Future<void> getAnswer(int optionIndex,String word) async
   {
+    await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
+      currentPointForUser = value.get("userPoint").toString();
+    });
+    currentPointForUser2 = int.parse(currentPointForUser);
+
+
     optionColorList[1] = Colors.grey[150];
     optionColorList[2] = Colors.grey[150];
     optionColorList[3] = Colors.grey[150];
     //print(optionIndex.toString()+word);
     if (chosenWord == word) {
       //print("Correct Answer");
+      await DatabaseService(uid: _asd.uid).updateUserPoint(currentPointForUser2+10);
       Toast.show(
           "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
           gravity: Toast.BOTTOM);
