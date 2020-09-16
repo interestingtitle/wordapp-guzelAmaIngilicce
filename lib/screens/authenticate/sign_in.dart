@@ -84,7 +84,7 @@ class _SignInState extends State<SignIn> {
                 RaisedButton(
                   color: Colors.blue[800],
                   child: Text(
-                    "Sign In",
+                    "Sign In With Email",
                     style: TextStyle(
                       color: Colors.white
                     ),
@@ -105,14 +105,9 @@ class _SignInState extends State<SignIn> {
 
                   },
                 ),
-                RaisedButton(
-                  color: Colors.blue[800],
-                  child: Text(
-                    "Sign In With Google",
-                    style: TextStyle(
-                        color: Colors.white
-                    ),
-                  ),
+                SizedBox(height: 20.0,),
+                OutlineButton(
+                  splashColor: Colors.grey,
                   onPressed: () async{
                     {
                       setState(() {
@@ -128,6 +123,29 @@ class _SignInState extends State<SignIn> {
                     }
 
                   },
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                  highlightElevation: 0,
+                  borderSide: BorderSide(color: Colors.grey),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            'Sign in with Google',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(height: 20.0,),
                 Text(
