@@ -70,7 +70,13 @@ class _WordsTestState extends State<WordsTest> {
         optionColorList[4]=Colors.red;
       }
     }
-
+  else
+    {
+      Navigator.of(context).pop();
+      Toast.show(
+          "İnternet'e bağlı değilsiniz.", context, duration: Toast.LENGTH_SHORT,
+          gravity: Toast.BOTTOM);
+    }
   }
 
     @override
@@ -126,11 +132,6 @@ class _WordsTestState extends State<WordsTest> {
                     },
                   ),
                 ),
-
-
-
-
-
                 Expanded(
                   flex: 5,
                   child: RaisedButton(
@@ -172,9 +173,6 @@ class _WordsTestState extends State<WordsTest> {
 
                   ),
                 ),
-
-
-
                 Expanded(
                   flex: 5,
                   child: RaisedButton(
