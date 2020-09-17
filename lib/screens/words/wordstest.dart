@@ -74,7 +74,7 @@ class _WordsTestState extends State<WordsTest> {
     {
       Navigator.of(context).pop();
       Toast.show(
-          "İnternet'e bağlı değilsiniz.", context, duration: Toast.LENGTH_SHORT,
+          "İnternet'e bağlı değilsiniz.", context, duration: Toast.LENGTH_LONG,
           gravity: Toast.BOTTOM);
     }
   }

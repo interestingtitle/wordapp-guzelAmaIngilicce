@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guzel_ama_ingilicce/screens/profile/profilescreen.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordsmain.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   int _pageIndex = 1;
   //GlobalKey _bottomNavigationKey = GlobalKey();
   List <Widget> _widgets=<Widget>[
-    Text("One"),
+    ProfileScreen(),
     Words(),
     Profile(),
   ];
