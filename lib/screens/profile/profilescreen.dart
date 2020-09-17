@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
+import 'dart:math';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -6,7 +10,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
+  int _currentPointForUser2;
+  User _asd = FirebaseAuth.instance.currentUser;
+  String currentPointForUser;
+  dynamic level = "hesaplanıyor...";
+  void initState(){
+    super.initState();
+    getUserPoint();
+    
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Row(
                             children: <Widget>[
                               Expanded(child: Text("Kullanıcı Adı:      ")),
-                              Expanded(child: Text("Level:     "))
+                              Expanded(child: Text("Level:  $level"))
                           ]
                           ),
                         ),
@@ -67,5 +80,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
     );
+  
+  
+  
+  }
+  void getUserPoint() async{
+      
+      await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
+        currentPointForUser = value.get("userPoint").toString();
+      });
+      _currentPointForUser2 = int.parse(currentPointForUser);
+      
+      setState(() {
+        level = _currentPointForUser2 ~/ 100;
+        level = level.toString();
+      });
+      
+      
   }
 }
