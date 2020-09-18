@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> {
           styleTextUnderTheLoader: new TextStyle(),
           photoSize: 200.0,
           loaderColor: Colors.white,
+          loadingText:Text("Yükleniyor..."),
 
       );
     }else{

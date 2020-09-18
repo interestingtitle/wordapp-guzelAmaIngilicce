@@ -65,7 +65,7 @@ int randomInt(int a,int b)
       var random=new Random();
       int rnd = random.nextInt(b)+a;
       chosenWord=wordList[rnd].dataEN;
-      print("Chosen word: " +chosenWord);
+      //print("Chosen word: " +chosenWord);
       return rnd;
 
 }
@@ -132,19 +132,19 @@ Future<void> getWordList() async
   var _listGrabber= new List(); // Getting all collections from database.
   List <WordData> _dummyList=new List();// Creating WordData list for separating categories.
   String _category;
-  for(int index=1;index<=6;index++) { // 1 to Max Categories
+  for(int index=1;index<=5;index++) { // 1 to Max Categories
     _dummyList.clear();
+    _listGrabber.clear();
     await FirebaseFirestore.instance
         .collection('wordlist').doc('category').collection(index.toString())
         .get().then((value) {
       _listGrabber=value.docs.toList(); // Getting all collections separated by categories.
     });
 
-    print(_category);
+    //print(_category);
     //print("Length: "+_listGrabber.length.toString());
     //print("Category:"+_listGrabber.elementAt(0).get('category'));
-
-    for(int i=1;i<_listGrabber.length-1;i++)
+    for(int i=1;i<_listGrabber.length;i++)
       {
         //print("Data-> "+_listGrabber.elementAt(i).get('dataEN'));
         //print("Data-> "+_listGrabber.elementAt(i).get('dataTR'));
@@ -153,21 +153,27 @@ Future<void> getWordList() async
         //print(_testWord);
       }
     _category=_listGrabber.elementAt(0).get('category');
+    //print(_category);
+    //print(_listGrabber.elementAt(1).get('dataEN'));
     WordDataList _dummyAllWords=new WordDataList(items:_dummyList,categoryName: _category); //Initialize allWordsWithCategories
     //print("Category: "+_dummyAllWords.categoryName);
     //print("Length: "+_dummyAllWords.items.length.toString());
+    //print("Test: "+_dummyAllWords.items.elementAt(1).dataEN);
     allWordsWithCategories.add(_dummyAllWords);
+    //print(allWordsWithCategories[index-1]);
+    _dummyList.clear();
+    _dummyAllWords=null;
+    _listGrabber.clear();
   }
-  var random=new Random();
-  int rnd = random.nextInt(6)+1;
-  //print(allWordsWithCategories);
+}
 
-  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
-  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
-  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
-  wordList[0] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR.toString());
-  wordList[1] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
-  wordList[2] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
-  currentCategory=_category;
-  return;
+void pickRandomCategory()
+{
+  var random=new Random();
+  int rnd = random.nextInt(5)+0;
+  //print(allWordsWithCategories);
+  //print(rnd);
+  WordDataList _chosenCategoryList=allWordsWithCategories[3];
+  print(_chosenCategoryList);
+
 }

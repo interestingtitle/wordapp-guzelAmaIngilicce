@@ -54,7 +54,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       showLicensePage(
                           context: context,
                           applicationName: 'WordApp',
-                          applicationVersion: 'v1.1',
+                          applicationVersion: 'v1.0.0',
 
                           useRootNavigator: false))),
         ],

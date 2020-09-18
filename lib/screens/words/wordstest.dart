@@ -98,7 +98,7 @@ class _WordsTestState extends State<WordsTest> {
                       padding: const EdgeInsets.all(15.0),
                       child: CountdownTimer(endTime: endTime,
                         onEnd: (){
-                          print("Game Over");
+                          print("Time over");
                           Navigator.of(context).pop();
                         },
                       ),
@@ -127,15 +127,15 @@ class _WordsTestState extends State<WordsTest> {
                     child: Text(wordList[randomInt(0,2)].dataTR.toString()),
                     color: optionColorList[0],
                     onPressed: () async {
-                      await getRandomWordList();
-
+                      //await getRandomWordList();
+                      pickRandomCategory();
                       //printList();
-                      await getWordList();
+                      //await getWordList();
                       setState((){
-                        optionA = wordList[0].dataEN.toString();
-                        optionB = wordList[1].dataEN.toString();
-                        optionC = wordList[2].dataEN.toString();
-                        getAnswer(0, "none");
+                        //optionA = wordList[0].dataEN.toString();
+                        //optionB = wordList[1].dataEN.toString();
+                        //optionC = wordList[2].dataEN.toString();
+                        //getAnswer(0, "none");
 
                       });
                     },
