@@ -7,7 +7,7 @@ import 'package:guzel_ama_ingilicce/screens/profile/profile.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:flutter/cupertino.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -35,8 +35,8 @@ class _HomeState extends State<Home> {
       value: DatabaseService().fruits,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Hoşgeldiniz - Oturum Açıldı"),
-          backgroundColor: Colors.blue[300],
+          title: Text("Hoşgeldiniz - Oturum Açıldı",style: TextStyle(fontSize: 16.0),),
+          backgroundColor: CupertinoColors.systemBlue,
           elevation: 0.0,
           actions: <Widget>[
             FlatButton.icon(
