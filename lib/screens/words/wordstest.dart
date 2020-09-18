@@ -10,7 +10,7 @@ import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
 import 'package:guzel_ama_ingilicce/services/connectivity.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-
+import 'package:guzel_ama_ingilicce/models/datasetter.dart';
 
 
 class WordsTest extends StatefulWidget {
@@ -128,6 +128,7 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[0],
                     onPressed: () async {
                       await getRandomWordList();
+
                       //printList();
                       await getWordList();
                       setState((){
