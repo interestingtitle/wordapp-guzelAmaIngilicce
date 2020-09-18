@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: CupertinoColors.systemBlue,
         elevation: 0.0,
-        title: Text("Güzel Ama İngilicce"),
+        title: Text("Güzel Ama İngiliççe"),
         actions: <Widget>[
           FlatButton.icon(
 
@@ -51,8 +51,8 @@ class _SignInState extends State<SignIn> {
               children: <Widget>[
                 SizedBox(height: 70.0,),
                 TextFormField(
-
-                  decoration: textInputDecoration.copyWith(hintText: "Email", ),
+                  textAlign: TextAlign.center,
+                  decoration: textInputDecoration.copyWith(hintText: "Email"),
                   validator: (val){
                     if(val.isEmpty)
                       return "Lütfen geçerli bir email adresi giriniz";
@@ -67,6 +67,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20.0,),
                 TextFormField(
+                  textAlign: TextAlign.center,
                   decoration: textInputDecoration.copyWith(hintText: "Şifre"),
                   validator: (val){
                     if(val.length<6)
@@ -84,9 +85,10 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20.0,),
                 RaisedButton(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                   color: CupertinoColors.systemBlue,
                   child: Text(
-                    "Email İle Giriş Yap",
+                    " Giriş Yap",
                     style: TextStyle(
                       color: Colors.white
                     ),

@@ -49,6 +49,7 @@ class _RegisterState extends State<Register> {
                 children: <Widget>[
                   SizedBox(height: 70.0,),
                   TextFormField(
+                    textAlign: TextAlign.center,
                     decoration: textInputDecoration.copyWith(hintText: "Email"),
                     validator: (val){
                       if(val.isEmpty)
@@ -64,7 +65,7 @@ class _RegisterState extends State<Register> {
                   ),
                   SizedBox(height: 20.0,),
                   TextFormField(
-
+                    textAlign: TextAlign.center,
                     decoration: textInputDecoration.copyWith(hintText: "Şifre"),
                     obscureText: true,
                     validator: (val){
@@ -82,6 +83,7 @@ class _RegisterState extends State<Register> {
                   SizedBox(height: 20.0,),
                   RaisedButton(
                     color: CupertinoColors.systemBlue,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                     child: Text(
                       "Email İle Kayıt Ol",
                       style: TextStyle(
