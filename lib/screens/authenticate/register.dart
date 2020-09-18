@@ -27,7 +27,7 @@ class _RegisterState extends State<Register> {
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: CupertinoColors.systemBlue,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         title: Text("Güzel Ama İngilicce"),
         actions: <Widget>[

@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: CupertinoColors.systemBlue,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         title: Text("Güzel Ama İngiliççe"),
         actions: <Widget>[

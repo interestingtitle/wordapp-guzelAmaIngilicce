@@ -3,7 +3,7 @@ import 'package:guzel_ama_ingilicce/screens/profile/profilescreen.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordsmain.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'file:///C:/Users/Administrator/AndroidStudioProjects/wordapp-guzelAmaIngilicce/lib/screens/home/settings.dart';
+import 'package:guzel_ama_ingilicce/screens/home/settings.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
           ],
           color: Colors.white,
           buttonBackgroundColor: Colors.white,
-          backgroundColor: Colors.lightBlue[200],
+          backgroundColor: Colors.blue[50],
           animationCurve: Curves.easeInOut,
           animationDuration: Duration(milliseconds: 200),
           onTap: (index) {

@@ -19,6 +19,7 @@ class _WordsState extends State<Words> {
     return StreamProvider<CUser>.value(
       value: AuthService().user,
       child: Container(
+        color: Colors.blue[50],
         child:ListView(
           padding: new EdgeInsets.all(1.0),
           children: <Widget>[
