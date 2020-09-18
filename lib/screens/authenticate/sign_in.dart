@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:guzel_ama_ingilicce/shared/constants.dart';
 import 'package:guzel_ama_ingilicce/shared/loading.dart';
-
+import 'package:flutter/cupertino.dart';
 
 class SignIn extends StatefulWidget {
 
@@ -28,7 +28,7 @@ class _SignInState extends State<SignIn> {
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CupertinoColors.systemBlue,
         elevation: 0.0,
         title: Text("Güzel Ama İngilicce"),
         actions: <Widget>[
@@ -84,9 +84,9 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20.0,),
                 RaisedButton(
-                  color: Colors.blue[800],
+                  color: CupertinoColors.systemBlue,
                   child: Text(
-                    "Sign In With Email",
+                    "Email İle Giriş Yap",
                     style: TextStyle(
                       color: Colors.white
                     ),
@@ -100,7 +100,7 @@ class _SignInState extends State<SignIn> {
                       if(result == null){
                         setState(() {
                           loading = false;
-                          error = "Please write a valid email!";
+                          error = "Lütfen geçerli bir email giriniz";
                         });
                       }
                     }
@@ -138,10 +138,10 @@ class _SignInState extends State<SignIn> {
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
-                            'Sign in with Google',
+                            'Google Hesabıyla Giriş Yap',
                             style: TextStyle(
                               fontSize: 13,
-                              color: Colors.grey,
+                              color: CupertinoColors.systemBlue,
                             ),
                           ),
                         )

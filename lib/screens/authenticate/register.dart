@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:guzel_ama_ingilicce/shared/constants.dart';
 import 'package:guzel_ama_ingilicce/shared/loading.dart';
+import 'package:flutter/cupertino.dart';
 //import 'package:toast/toast.dart';
 class Register extends StatefulWidget {
 
@@ -26,7 +27,7 @@ class _RegisterState extends State<Register> {
     return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CupertinoColors.systemBlue,
         elevation: 0.0,
         title: Text("Güzel Ama İngilicce"),
         actions: <Widget>[
@@ -80,7 +81,7 @@ class _RegisterState extends State<Register> {
                   ),
                   SizedBox(height: 20.0,),
                   RaisedButton(
-                    color: Colors.blue[800],
+                    color: CupertinoColors.systemBlue,
                     child: Text(
                       "Email İle Kayıt Ol",
                       style: TextStyle(
