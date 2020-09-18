@@ -26,123 +26,126 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue[50],
-      child: Column(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.blue[50],
+        child: Column(
 
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 3,
-                    child: Image(
-                      image: AssetImage("assets/mario.png"),
-                      height: 90.0,
-                      width: 90.0,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                flex: 4,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Image(
+                        image: AssetImage("assets/mario.png"),
+                        height: 90.0,
+                        width: 90.0,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 6,
-                    child: Column(
+                    Expanded(
+                      flex: 6,
+                      child: Column(
 
-                      children: <Widget>[
-                        Expanded(
-                          flex: 3,
-                          child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Column(
 
-                            children: <Widget>[
-                              Expanded(
-                              flex: 2,
-                                  child: Container(
-                                    color: Colors.grey[100],
-                                    child: Center(
-                                      child: Text(
-                                        "Kullanıcı Adı: Barış",
-                                        style: GoogleFonts.mcLaren(),
-                                      ),
-                                    ),
-                                  ),
-                              ),
-                              Expanded(
+                              children: <Widget>[
+                                Expanded(
                                 flex: 2,
-                                  child: Container(
-                                    color: Colors.grey[100],
-                                    child: Center(
-                                      child: Text(
-                                        "Level:  $_level",style: GoogleFonts.mcLaren(),
+                                    child: Container(
+                                      color: Colors.grey[100],
+                                      child: Center(
+                                        child: Text(
+                                          "Kullanıcı Adı: Barış",
+                                          style: GoogleFonts.mcLaren(),
+                                        ),
                                       ),
                                     ),
-                                  )
-                              )
-                          ]
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                    child: Container(
+                                      color: Colors.grey[100],
+                                      child: Center(
+                                        child: Text(
+                                          "Level:  $_level",style: GoogleFonts.mcLaren(),
+                                        ),
+                                      ),
+                                    )
+                                )
+                            ]
+                            ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blueAccent),
-                  color: Colors.grey[100],
-              ),
-              child: Center(
-                child: Text(
-                  "Başarımlarınız:",
-                  style: GoogleFonts.mcLaren(),
+                  ],
                 ),
               ),
-            ),
+              Container(
 
-            Expanded(
-              flex: 6,
-              child: Row(
-                children: <Widget>[
-
-                  Expanded(
-                    flex: 3,
-                    child: Image(
-                      image: AssetImage("assets/mario.png"),
-                      height: 60.0,
-                      width: 60.0,
-                    ),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueAccent),
+                    color: Colors.grey[100],
+                ),
+                child: Center(
+                  child: Text(
+                    "Başarımlarınız:",
+                    style: GoogleFonts.mcLaren(),
                   ),
-                  Expanded(
-                    flex: 7,
-                      child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
-                ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 6,
-              child: Row(
-                children: <Widget>[
 
-                  Expanded(
-                    flex: 3,
-                    child: Image(
-                      image: AssetImage("assets/star.png"),
-                      height: 60.0,
-                      width: 60.0,
+              Expanded(
+                flex: 6,
+                child: Row(
+                  children: <Widget>[
+
+                    Expanded(
+                      flex: 3,
+                      child: Image(
+                        image: AssetImage("assets/mario.png"),
+                        height: 60.0,
+                        width: 60.0,
+                      ),
                     ),
-                  ),
-                  Expanded(
+                    Expanded(
                       flex: 7,
-                      child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
-                ],
+                        child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
+                  ],
+                ),
               ),
-            ),
+              Expanded(
+                flex: 6,
+                child: Row(
+                  children: <Widget>[
 
-          ],
-        ),
+                    Expanded(
+                      flex: 3,
+                      child: Image(
+                        image: AssetImage("assets/star.png"),
+                        height: 60.0,
+                        width: 60.0,
+                      ),
+                    ),
+                    Expanded(
+                        flex: 7,
+                        child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+      ),
     );
   
   
