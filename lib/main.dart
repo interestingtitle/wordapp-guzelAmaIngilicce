@@ -59,12 +59,13 @@ class _MyAppState extends State<MyApp> {
       return new SplashScreen(
           seconds: 6,
           navigateAfterSeconds: new AfterSplash(),
-          title: new Text('WordAPP', style: TextStyle(color: Colors.black),),
+          title: new Text('Güzel Ama İngiliççe', style: TextStyle(color: Colors.black),),
           image: Image.asset('assets/openingscene.gif',width: 128.0, height: 128.0,),
           backgroundColor: Colors.white,
           styleTextUnderTheLoader: new TextStyle(),
           photoSize: 200.0,
           loaderColor: Colors.white,
+          loadingText: Text("Yükleniyor...",style: TextStyle(color: Colors.black),),
 
       );
     }else{

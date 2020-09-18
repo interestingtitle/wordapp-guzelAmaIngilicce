@@ -120,8 +120,7 @@ class _ProfileState extends State<Profile> {
                 onPressed:(){
                   launchURL();
                 },
-                child: Text("2020 © InterestingTitle \ngithub.com/interestingtitle "),
-
+                child: Text("2020 © InterestingTitle \ngithub.com/interestingtitle"),
               ),
 
             ),
