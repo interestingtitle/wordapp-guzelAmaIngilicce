@@ -24,15 +24,15 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return loading ? Loading() : Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
+        backgroundColor: Colors.blue[800],
         elevation: 0.0,
         title: Text("Güzel Ama İngilicce"),
         actions: <Widget>[
           FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text("Sign In"),
+              icon: Icon(Icons.person, color: Colors.white,),
+              label: Text("Giriş Yap",style: TextStyle(color: Colors.white),),
             onPressed: (){
               widget.toggleView();
             },
@@ -46,12 +46,12 @@ class _RegisterState extends State<Register> {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 20.0,),
+                  SizedBox(height: 70.0,),
                   TextFormField(
                     decoration: textInputDecoration.copyWith(hintText: "Email"),
                     validator: (val){
                       if(val.isEmpty)
-                        return "Enter an email";
+                        return "Lütfen geçerli bir email adresi giriniz";
                       else
                         return null;
                     },
@@ -64,11 +64,11 @@ class _RegisterState extends State<Register> {
                   SizedBox(height: 20.0,),
                   TextFormField(
 
-                    decoration: textInputDecoration.copyWith(hintText: "Password"),
+                    decoration: textInputDecoration.copyWith(hintText: "Şifre"),
                     obscureText: true,
                     validator: (val){
                       if(val.length<6)
-                        return "Password cannot be less than 6 character";
+                        return "Şifre 6 karakterden az olamaz";
                       else
                         return null;
                     },
@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                   RaisedButton(
                     color: Colors.blue[800],
                     child: Text(
-                      "Sign Up",
+                      "Email İle Kayıt Ol",
                       style: TextStyle(
                           color: Colors.white
                       ),
