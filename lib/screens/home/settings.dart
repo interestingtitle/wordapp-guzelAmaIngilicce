@@ -47,7 +47,7 @@ class _ProfileState extends State<Profile> {
                 children: <Widget>[
                   const SizedBox(height: 30),
                   Text(
-                    "WordApp",
+                    "Güzel Ama İngilizce",
                     style: Theme.of(context).textTheme.headline5,
                     textAlign: TextAlign.center,
                   ),
