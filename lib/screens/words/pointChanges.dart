@@ -12,7 +12,6 @@ Widget getCategoryName()
   {
     return Text(
       currentCategory,
-
     );
   }
 }

@@ -40,7 +40,7 @@ class _WordsState extends State<Words> {
                   if(await DataConnectionChecker().hasConnection)
                     {
                       await getRandomWordList();
-                      await getWordList();
+                      //await getWordList();
                       try{
                         optionA=wordList[0].dataEN.toString();
                         optionB=wordList[1].dataEN.toString();

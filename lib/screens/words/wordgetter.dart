@@ -74,11 +74,14 @@ Future <void> getRandomWordList() async
 {
   wordList.clear();
   wordListCount=0;
+
+  String _setCategory="clothes";
+
   for(int i=0;wordList.length<=2;i++) {
     Random random = new Random();
     int randomNumber = random.nextInt(16) + 1;
     await FirebaseFirestore.instance
-        .collection('wordlist').doc('category').collection('colors').doc(randomNumber.toString())
+        .collection('wordlist').doc('category').collection(_setCategory).doc(randomNumber.toString())
         .get()
         .then((value)  {
           //print("Getting data from server: "+i.toString());
@@ -88,6 +91,7 @@ Future <void> getRandomWordList() async
 
 
   }
+  currentCategory=_setCategory;
   //print(wordList);
   var random = new Random();
 
