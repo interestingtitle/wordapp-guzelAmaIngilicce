@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -45,16 +45,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Expanded(
                     flex: 6,
                     child: Column(
+
                       children: <Widget>[
                         Expanded(
+                          flex: 3,
                           child: Row(
+
                             children: <Widget>[
-                              Expanded(child: Text("Kullanıcı Adı:      ")),
-                              Expanded(child: Text("Level:  $level"))
+                              Expanded(
+                              flex: 4,
+                                  child: Text(
+                                    "Kullanıcı Adı:      ",
+                                    style: GoogleFonts.mcLaren(),
+                                  ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                  child: Text(
+                                    "Level:  $level",style: GoogleFonts.mcLaren(),
+                                  )
+                              )
                           ]
                           ),
                         ),
-                        Expanded(child: Text("Sonraki Levela Yaklaşımınız: ")),
+                        Expanded(
+                          flex: 2,
+                            child: Text("$level . level için ")),
                       ],
                     ),
                   ),
@@ -62,9 +78,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Expanded(
+              child: new Text(
+                "The Flash",
+                style: GoogleFonts.mcLaren(),
+              ),
+            ),
+            Expanded(
               flex: 10,
               child: Row(
                 children: <Widget>[
+
                   Expanded(
                     flex: 3,
                     child: Image(
@@ -78,7 +101,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
                 ],
               ),
-            )
+            ),
+
           ],
         ),
     );
