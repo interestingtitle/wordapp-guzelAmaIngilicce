@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
+import 'package:guzel_ama_ingilicce/models/variables.dart';
+
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
 List<WordDataList> allWordsWithCategories=new List<WordDataList>();
@@ -163,9 +165,9 @@ Future<void> getWordList() async
   //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
   //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
   //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
-  wordList[0] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(0).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR.toString());
-  wordList[1] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
-  wordList[2] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(3).dataTR.toString());
+  wordList[0] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR.toString());
+  wordList[1] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
+  wordList[2] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
   currentCategory=_category;
   return;
 }
