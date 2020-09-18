@@ -117,17 +117,17 @@ class _WordsTestState extends State<WordsTest> {
                 Expanded(
                   flex: 10,
                   child: RaisedButton(
-                    child: Text(wordList[randomInt()].dataTR.toString()),
+                    child: Text(wordList[randomInt(0,2)].dataTR.toString()),
                     color: optionColorList[0],
                     onPressed: () async {
-                      await getRandomWordList();
+                      //await getRandomWordList();
                       //printList();
                       setState(() {
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
                         optionC = wordList[2].dataEN.toString();
                         getAnswer(0, "none");
-
+                        getWordList();
                       });
                     },
                   ),

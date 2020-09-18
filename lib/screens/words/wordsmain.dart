@@ -7,6 +7,7 @@ import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:provider/provider.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:toast/toast.dart';
 class Words extends StatefulWidget {
   @override
   _WordsState createState() => _WordsState();
@@ -31,7 +32,7 @@ class _WordsState extends State<Words> {
             SizedBox(
               height: 60.0,
               child:RaisedButton(
-                child: Text("Play"),
+                child: Text("Oyna"),
                 color:Colors.white,
                 onPressed: () async{
                   print(await DataConnectionChecker().hasConnection);
@@ -42,7 +43,7 @@ class _WordsState extends State<Words> {
                         optionA=wordList[0].dataEN.toString();
                         optionB=wordList[1].dataEN.toString();
                         optionC=wordList[2].dataEN.toString();
-                        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 90;
+                        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
                         optionStatus="Seçim yapınız.";
                         setOptionColors();
 
@@ -56,6 +57,12 @@ class _WordsState extends State<Words> {
                       catch (e) {
 
                       }
+                    }
+                  else
+                    {
+                      Toast.show(
+                          "İnternet'e bağlı değilsiniz.", context, duration: Toast.LENGTH_LONG,
+                          gravity: Toast.BOTTOM);
                     }
 
                 },

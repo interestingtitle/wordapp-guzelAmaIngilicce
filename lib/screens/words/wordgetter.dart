@@ -4,6 +4,7 @@ import 'dart:math';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
+WordDataList allWordsWithCategories;
 int wordListCount=0;
 String chosenWord="";
 void setOptionColors()
@@ -22,6 +23,7 @@ void setOptionColors()
 }
 class WordData
 {
+  String category;
   String dataEN;
   String dataTR;
   WordData({this.dataEN,this.dataTR});
@@ -57,17 +59,15 @@ void createWordData(String enValue,String trValue )
 
 
 }
-int randomInt()
+int randomInt(int a,int b)
 {
       var random=new Random();
-      int rnd = random.nextInt(3)+0;
-      //print(rnd.toString());
+      int rnd = random.nextInt(b)+a;
       chosenWord=wordList[rnd].dataEN;
       print("Chosen word: " +chosenWord);
       return rnd;
 
 }
-
 
 Future <void> getRandomWordList() async
 {
@@ -75,15 +75,17 @@ Future <void> getRandomWordList() async
   wordListCount=0;
   for(int i=0;wordList.length<=2;i++) {
     Random random = new Random();
-    int randomNumber = random.nextInt(24) + 1;
+    int randomNumber = random.nextInt(16) + 1;
     await FirebaseFirestore.instance
-        .collection('wordlist').doc('category').collection('fruits').doc(randomNumber.toString())
+        .collection('wordlist').doc('category').collection('colors').doc(randomNumber.toString())
         .get()
         .then((value)  {
           //print("Getting data from server: "+i.toString());
       createWordData(value.get('dataEN').toString(),value.get('dataTR').toString());
     }
     );
+
+
   }
   //print(wordList);
   var random = new Random();
@@ -112,3 +114,47 @@ void printList()
   });
 }
 
+class WordDataList
+{
+  List <WordData> items;
+  String categoryName;
+  WordDataList({this.items,this.categoryName});
+  @override
+  String toString() {
+    return 'WordDataList{category: $categoryName, length: $items.length}';
+  }
+
+}
+
+void getWordList() async
+{
+  var _listGrabber= new List(); // Getting all collections from database.
+  List <WordData> _dummyList=new List();// Creating WordData list for separating categories.
+
+  for(int index=1;index<=6;index++) { // 1 to Max Categories
+    _dummyList.clear();
+    await FirebaseFirestore.instance
+        .collection('wordlist').doc('category').collection(index.toString())
+        .get().then((value) {
+      _listGrabber=value.docs.toList(); // Getting all collections separated by categories.
+    });
+
+    //print("Length: "+_listGrabber.length.toString());
+    //print("Category:"+_listGrabber.elementAt(0).get('category'));
+
+    for(int i=1;i<_listGrabber.length-1;i++)
+      {
+        //print("Data-> "+_listGrabber.elementAt(i).get('dataEN'));
+        //print("Data-> "+_listGrabber.elementAt(i).get('dataTR'));
+        WordData _dummyWord=new WordData(dataEN:_listGrabber.elementAt(i).get('dataEN') ,dataTR: _listGrabber.elementAt(i).get('dataTR'));
+        _dummyList.add(_dummyWord);
+        //print(_testWord);
+      }
+    String _category=_listGrabber.elementAt(0).get('category').toString();
+    allWordsWithCategories=new WordDataList(items:_dummyList,categoryName: _category); //Initialize allWordsWithCategories
+    print("Category: "+allWordsWithCategories.categoryName);
+    print("Length: "+allWordsWithCategories.items.length.toString());
+  }
+  var random=new Random();
+  int rnd = random.nextInt(6)+1;
+}
