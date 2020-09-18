@@ -35,13 +35,13 @@ class _HomeState extends State<Home> {
       value: DatabaseService().fruits,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("",style: TextStyle(fontSize: 16.0),),
-          backgroundColor: Colors.lightBlue[500],
+          title: Text("Hoşgeldiniz - Oturum Açıldı",style: TextStyle(fontSize: 16.0),),
+          backgroundColor: Colors.blue,
           elevation: 0.0,
           actions: <Widget>[
             FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text("Çıkış Yap"),
+              icon: Icon(Icons.person, color: Colors.white,),
+              label: Text("Çıkış Yap",style: TextStyle(color: Colors.white),),
               onPressed: () async{
                 await _firebaseAuth.signOut();
 
