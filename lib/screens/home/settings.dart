@@ -92,10 +92,11 @@ class _ProfileState extends State<Profile> {
               child: Align(
 
                 alignment: Alignment.centerLeft,
-                child: Text('Profile Settings            '
+                child: Text('Profil Ayarları            '
                     '                  '
                     '                  '
-                    '            >'),
+                    '           '
+                    '              >'),
               ),
               onPressed: () {
                 /*Navigator.push(
@@ -113,10 +114,11 @@ class _ProfileState extends State<Profile> {
               child: Align(
 
                 alignment: Alignment.centerLeft,
-                child: Text('Game Settings            '
+                child: Text('Oyun Ayarları            '
                     '                  '
                     '                  '
-                    '             >'),
+                    '             '
+                    '            >'),
               ),
               onPressed: () {
                 Navigator.push(
@@ -134,10 +136,11 @@ class _ProfileState extends State<Profile> {
               child: Align(
 
                 alignment: Alignment.centerLeft,
-                child: Text('Privacy               '
+                child: Text('Gizlilik               '
                     '                  '
                     '                  '
-                    '                       >'),
+                    '                     '
+                    '             >'),
               ),
               onPressed: () {
                 /*Navigator.push(
@@ -155,10 +158,11 @@ class _ProfileState extends State<Profile> {
                 child: Align(
 
                   alignment: Alignment.centerLeft,
-                  child: Text('Licenses               '
+                  child: Text('Lisanslar               '
                       '                  '
                       '                  '
-                      '                       >'),
+                      '                  '
+                      '            >'),
                 ),
                 onPressed: () {
                   /*Navigator.push(
