@@ -29,7 +29,7 @@ class _RegisterState extends State<Register> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         elevation: 0.0,
-        title: Text("Güzel Ama İngilicce"),
+        title: Text("Güzel Ama İngilicce", style: TextStyle(fontSize: 18.0),),
         actions: <Widget>[
           FlatButton.icon(
               icon: Icon(Icons.person, color: Colors.white,),
@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                   ),
                   SizedBox(height: 20.0,),
                   RaisedButton(
-                    color: CupertinoColors.systemBlue,
+                    color: Colors.blue,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                     child: Text(
                       "Email İle Kayıt Ol",

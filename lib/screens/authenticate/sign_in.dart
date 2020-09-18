@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         elevation: 0.0,
-        title: Text("Güzel Ama İngiliççe"),
+        title: Text("Güzel Ama İngiliççe", style: TextStyle(fontSize: 18.0),),
         actions: <Widget>[
           FlatButton.icon(
 
@@ -86,9 +86,9 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 20.0,),
                 RaisedButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-                  color: CupertinoColors.systemBlue,
+                  color: Colors.blue,
                   child: Text(
-                    " Giriş Yap",
+                    "Giriş Yap",
                     style: TextStyle(
                       color: Colors.white
                     ),

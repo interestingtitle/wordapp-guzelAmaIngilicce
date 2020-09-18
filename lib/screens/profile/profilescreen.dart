@@ -24,7 +24,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.blue[50],
       child: Column(
+
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -36,8 +38,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     flex: 3,
                     child: Image(
                       image: AssetImage("assets/mario.png"),
-                      height: 120.0,
-                      width: 120.0,
+                      height: 90.0,
+                      width: 90.0,
                     ),
                   ),
                   Expanded(
