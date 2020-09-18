@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
+import 'package:guzel_ama_ingilicce/models/variables.dart';
+
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
-WordDataList allWordsWithCategories;
+List<WordDataList> allWordsWithCategories=new List<WordDataList>();
 int wordListCount=0;
 String chosenWord="";
+String currentCategory;
 void setOptionColors()
 {
   Color colorQuestion=Colors.lightGreen[200];
@@ -37,7 +40,6 @@ void createWordData(String enValue,String trValue )
 {
   WordData wordNew=new WordData(dataEN: enValue,dataTR: trValue);
   bool duplicate=false;
-
   wordList.forEach((element) {
     if(element.dataEN==wordNew.dataEN)
     {
@@ -56,7 +58,6 @@ void createWordData(String enValue,String trValue )
 
       //print("List count:" + wordListCount.toString());
     }
-
 
 }
 int randomInt(int a,int b)
@@ -121,16 +122,16 @@ class WordDataList
   WordDataList({this.items,this.categoryName});
   @override
   String toString() {
-    return 'WordDataList{category: $categoryName, length: $items.length}';
+    return 'WordDataList{category: $categoryName, items: $items}';
   }
-
 }
 
-void getWordList() async
+Future<void> getWordList() async
 {
+  allWordsWithCategories.clear();
   var _listGrabber= new List(); // Getting all collections from database.
   List <WordData> _dummyList=new List();// Creating WordData list for separating categories.
-
+  String _category;
   for(int index=1;index<=6;index++) { // 1 to Max Categories
     _dummyList.clear();
     await FirebaseFirestore.instance
@@ -139,6 +140,7 @@ void getWordList() async
       _listGrabber=value.docs.toList(); // Getting all collections separated by categories.
     });
 
+    print(_category);
     //print("Length: "+_listGrabber.length.toString());
     //print("Category:"+_listGrabber.elementAt(0).get('category'));
 
@@ -150,11 +152,22 @@ void getWordList() async
         _dummyList.add(_dummyWord);
         //print(_testWord);
       }
-    String _category=_listGrabber.elementAt(0).get('category').toString();
-    allWordsWithCategories=new WordDataList(items:_dummyList,categoryName: _category); //Initialize allWordsWithCategories
-    print("Category: "+allWordsWithCategories.categoryName);
-    print("Length: "+allWordsWithCategories.items.length.toString());
+    _category=_listGrabber.elementAt(0).get('category');
+    WordDataList _dummyAllWords=new WordDataList(items:_dummyList,categoryName: _category); //Initialize allWordsWithCategories
+    //print("Category: "+_dummyAllWords.categoryName);
+    //print("Length: "+_dummyAllWords.items.length.toString());
+    allWordsWithCategories.add(_dummyAllWords);
   }
   var random=new Random();
   int rnd = random.nextInt(6)+1;
+  //print(allWordsWithCategories);
+
+  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
+  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
+  //createWordData(allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN,allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR);
+  wordList[0] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(1).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(1).dataTR.toString());
+  wordList[1] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
+  wordList[2] = WordData(dataEN:allWordsWithCategories.elementAt(1).items.elementAt(2).dataEN.toString(),dataTR:allWordsWithCategories.elementAt(1).items.elementAt(2).dataTR.toString());
+  currentCategory=_category;
+  return;
 }

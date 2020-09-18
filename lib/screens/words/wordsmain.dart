@@ -39,11 +39,12 @@ class _WordsState extends State<Words> {
                   if(await DataConnectionChecker().hasConnection)
                     {
                       await getRandomWordList();
+                      await getWordList();
                       try{
                         optionA=wordList[0].dataEN.toString();
                         optionB=wordList[1].dataEN.toString();
                         optionC=wordList[2].dataEN.toString();
-                        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
+                        endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 60;
                         optionStatus="Seçim yapınız.";
                         setOptionColors();
 

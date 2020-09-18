@@ -107,9 +107,16 @@ class _WordsTestState extends State<WordsTest> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
+                        child: getCategoryName(),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
                         child: pointChanges(_currentPointForUser2),
                       ),
-                    )
+                    ),
+
                   ],
                 ),
               ),
@@ -120,14 +127,15 @@ class _WordsTestState extends State<WordsTest> {
                     child: Text(wordList[randomInt(0,2)].dataTR.toString()),
                     color: optionColorList[0],
                     onPressed: () async {
-                      //await getRandomWordList();
+                      await getRandomWordList();
                       //printList();
-                      setState(() {
+                      await getWordList();
+                      setState((){
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
                         optionC = wordList[2].dataEN.toString();
                         getAnswer(0, "none");
-                        getWordList();
+
                       });
                     },
                   ),
@@ -141,9 +149,6 @@ class _WordsTestState extends State<WordsTest> {
                     onPressed: () async {
                       getAnswer(1, optionA);
                       await getRandomWordList();
-                      //printList();
-                      //await getRandomWordList();
-                      //printList();
                       setState(() {
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
