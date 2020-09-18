@@ -1,9 +1,10 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/screens/profile/profilesettings.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:guzel_ama_ingilicce/screens/profile/profilesettings.dart';
 //import 'package:guzel_ama_ingilicce/services/auth.dart';
+//import 'package:guzel_ama_ingilicce/profile/profilesettings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 launchURL() async {
@@ -40,7 +41,7 @@ class _ProfileState extends State<Profile> {
           padding: new EdgeInsets.all(1.0),
           children: <Widget>[
           SizedBox(
-              height: 200.0,
+              height: 150.0,
               child:RaisedButton(
                 color:Colors.white,
                 onPressed: (){},

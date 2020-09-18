@@ -3,7 +3,7 @@ import 'package:guzel_ama_ingilicce/screens/profile/profilescreen.dart';
 import 'package:guzel_ama_ingilicce/screens/words/wordsmain.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:guzel_ama_ingilicce/screens/profile/profile.dart';
+import 'file:///C:/Users/Administrator/AndroidStudioProjects/wordapp-guzelAmaIngilicce/lib/screens/home/settings.dart';
 import 'package:guzel_ama_ingilicce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -35,8 +35,8 @@ class _HomeState extends State<Home> {
       value: DatabaseService().fruits,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Hoşgeldiniz - Oturum Açıldı",style: TextStyle(fontSize: 16.0),),
-          backgroundColor: CupertinoColors.systemBlue,
+          title: Text("",style: TextStyle(fontSize: 16.0),),
+          backgroundColor: Colors.lightBlue[500],
           elevation: 0.0,
           actions: <Widget>[
             FlatButton.icon(
