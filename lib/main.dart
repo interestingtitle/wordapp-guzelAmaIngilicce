@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     AlertDialog buildAlertDialog(){
       return AlertDialog(
         title: Text("Uygulamayı Açmak İçin Lütfen İnternete Bağlanın"),
-        content: Text("Bağlantı Deneme"),
+        content: Text("Bağlantı Kurulamadı."),
         actions: [
           retryConnection,
           quitApp,
@@ -57,14 +57,15 @@ class _MyAppState extends State<MyApp> {
     }
     if(isInternetOn == true){
       return new SplashScreen(
-          seconds: 5,
+          seconds: 6,
           navigateAfterSeconds: new AfterSplash(),
           title: new Text('WordAPP', style: TextStyle(color: Colors.black),),
           image: Image.asset('assets/openingscene.gif',width: 128.0, height: 128.0,),
           backgroundColor: Colors.white,
           styleTextUnderTheLoader: new TextStyle(),
           photoSize: 200.0,
-          loaderColor: Colors.white
+          loaderColor: Colors.white,
+
       );
     }else{
       return buildAlertDialog();

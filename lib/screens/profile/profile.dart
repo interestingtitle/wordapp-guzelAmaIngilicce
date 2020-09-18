@@ -4,8 +4,16 @@ import 'package:guzel_ama_ingilicce/screens/profile/profilesettings.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-
+launchURL() async {
+  const url = 'https://github.com/interestingtitle';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -16,9 +24,6 @@ class _ProfileState extends State<Profile> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   //final AuthService _auth = AuthService();
 
-
-  String a = "ahmet";
-  int b = 15;
 
 //  User inputData() {
 //    User currentUser = auth.currentUser;
@@ -39,9 +44,12 @@ class _ProfileState extends State<Profile> {
               child:RaisedButton(
                 color:Colors.white,
                 onPressed: (){},
+                shape: CircleBorder(),
               ),
 
           ),
+
+
           SizedBox(
             height: 60,
             child:RaisedButton(
@@ -56,10 +64,10 @@ class _ProfileState extends State<Profile> {
                     '            >'),
               ),
               onPressed: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileSettings()),
-                );
+                );*/
               },
             ),
           ),
@@ -71,10 +79,10 @@ class _ProfileState extends State<Profile> {
               child: Align(
 
                 alignment: Alignment.centerLeft,
-                child: Text('Profile Settings            '
+                child: Text('Game Settings            '
                     '                  '
                     '                  '
-                    '           >'),
+                    '             >'),
               ),
               onPressed: () {
                 Navigator.push(
@@ -92,65 +100,36 @@ class _ProfileState extends State<Profile> {
               child: Align(
 
                 alignment: Alignment.centerLeft,
-                child: Text('Profile Settings            '
+                child: Text('Privacy               '
                     '                  '
                     '                  '
-                    '           >'),
+                    '                       >'),
               ),
               onPressed: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileSettings()),
-                );
+                );*/
               },
             ),
           ),
-          SizedBox(
-            height: 60,
-            child:RaisedButton(
+            SizedBox(
+              height: 60.0,
+              child:RaisedButton(
+                color:Colors.grey[100],
+                onPressed:(){
+                  launchURL();
+                },
+                child: Text("2020 © InterestingTitle \ngithub.com/interestingtitle "),
 
-              color: Colors.grey[100],
-              child: Align(
-
-                alignment: Alignment.centerLeft,
-                child: Text('Profile Settings            '
-                    '                  '
-                    '                  '
-                    '           >'),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileSettings()),
-                );
-              },
+
             ),
-          ),
-          SizedBox(
-            height: 60,
-            child:RaisedButton(
-
-              color: Colors.grey[100],
-              child: Align(
-
-                alignment: Alignment.centerLeft,
-                child: Text('Profile Settings            '
-                    '                  '
-                    '                  '
-                    '                   >'),
-              ),
-              onPressed: () {
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileSettings()),
-                );
-              },
-            ),
-          ),
         ],
       ),
+
       );
+
 
     }
   }

@@ -32,7 +32,7 @@ class _WordsState extends State<Words> {
             SizedBox(
               height: 60.0,
               child:RaisedButton(
-                child: Text("Oyna"),
+                child: Text("Play"),
                 color:Colors.white,
                 onPressed: () async{
                   print(await DataConnectionChecker().hasConnection);
