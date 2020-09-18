@@ -15,7 +15,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int _currentPointForUser2;
   User _asd = FirebaseAuth.instance.currentUser;
   String currentPointForUser;
-  dynamic level = "hesaplanıyor...";
+  dynamic _level = "hesaplanıyor...";
+  dynamic _nextLevel = "hesaplanıyor...";
   void initState(){
     super.initState();
     getUserPoint();
@@ -51,28 +52,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: <Widget>[
                         Expanded(
                           flex: 3,
-                          child: Row(
+                          child: Column(
 
                             children: <Widget>[
                               Expanded(
-                              flex: 4,
-                                  child: Text(
-                                    "Kullanıcı Adı:      ",
-                                    style: GoogleFonts.mcLaren(),
+                              flex: 2,
+                                  child: Container(
+                                    color: Colors.grey[100],
+                                    child: Center(
+                                      child: Text(
+                                        "Kullanıcı Adı: Barış",
+                                        style: GoogleFonts.mcLaren(),
+                                      ),
+                                    ),
                                   ),
                               ),
                               Expanded(
                                 flex: 2,
-                                  child: Text(
-                                    "Level:  $level",style: GoogleFonts.mcLaren(),
+                                  child: Container(
+                                    color: Colors.grey[100],
+                                    child: Center(
+                                      child: Text(
+                                        "Level:  $_level",style: GoogleFonts.mcLaren(),
+                                      ),
+                                    ),
                                   )
                               )
                           ]
                           ),
                         ),
-                        Expanded(
-                          flex: 2,
-                            child: Text("$level . level için ")),
+
                       ],
                     ),
                   ),
@@ -80,18 +89,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(1.0),
-              padding: const EdgeInsets.all(1.0),
+
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blueAccent)
+                  border: Border.all(color: Colors.blueAccent),
+                  color: Colors.grey[100],
               ),
-              child: Text(
-                "Başarımlarınız:",
-                style: GoogleFonts.mcLaren(),
+              child: Center(
+                child: Text(
+                  "Başarımlarınız:",
+                  style: GoogleFonts.mcLaren(),
+                ),
               ),
             ),
+
             Expanded(
-              flex: 10,
+              flex: 6,
               child: Row(
                 children: <Widget>[
 
@@ -105,6 +117,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Expanded(
                     flex: 7,
+                      child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 6,
+              child: Row(
+                children: <Widget>[
+
+                  Expanded(
+                    flex: 3,
+                    child: Image(
+                      image: AssetImage("assets/star.png"),
+                      height: 60.0,
+                      width: 60.0,
+                    ),
+                  ),
+                  Expanded(
+                      flex: 7,
                       child: Text("50 kelimeye ulaştın.\nÇoğu kişi günde 50 kelimeden fazlasını kullanmaz.")),
                 ],
               ),
@@ -125,8 +156,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _currentPointForUser2 = int.parse(currentPointForUser);
       
       setState(() {
-        level = _currentPointForUser2 ~/ 100;
-        level = level.toString();
+        _level = _currentPointForUser2 ~/ 100;
+        _nextLevel = _level+1;
+        _level = _level.toString();
+
       });
       
       
