@@ -115,6 +115,33 @@ class _ProfileState extends State<Profile> {
             ),
           ),
             SizedBox(
+              height: 60,
+              child:RaisedButton(
+
+                color: Colors.grey[100],
+                child: Align(
+
+                  alignment: Alignment.centerLeft,
+                  child: Text('Licenses               '
+                      '                  '
+                      '                  '
+                      '                       >'),
+                ),
+                onPressed: () {
+                  /*Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileSettings()),
+                );*/
+                  showLicensePage(
+                      context: context,
+                      applicationName: 'WordApp',
+                      applicationVersion: 'v1.0',
+                      useRootNavigator: true
+                  );
+                },
+              ),
+            ),
+            SizedBox(
               height: 60.0,
               child:RaisedButton(
                 color:Colors.grey[100],

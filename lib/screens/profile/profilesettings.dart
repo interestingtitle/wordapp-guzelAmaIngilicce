@@ -53,9 +53,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   functionToCall: () =>
                       showLicensePage(
                           context: context,
-                          applicationName: 'example',
+                          applicationName: 'WordApp',
                           applicationVersion: 'v1.1',
-                          useRootNavigator: true))),
+
+                          useRootNavigator: false))),
         ],
       ),
     );
@@ -87,7 +88,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     );
 
     final profileSettingsTile = new Material(
-      color: Colors.transparent,
+      color: Colors.grey[100],
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -201,8 +202,8 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             ]));
 
     final List<Widget> widgetList = [
-      titleOnTopSwitch,
-      const SizedBox(height: 15.0),
+      //titleOnTopSwitch,
+      //const SizedBox(height: 15.0),
       profileSettingsTile,
       const SizedBox(height: 15.0),
       privacySettings,
@@ -214,10 +215,9 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
     return new Scaffold(
       appBar: AppBar(
-
       ),
       body: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: ListView(
               children: widgetList,
               physics: const AlwaysScrollableScrollPhysics())),
