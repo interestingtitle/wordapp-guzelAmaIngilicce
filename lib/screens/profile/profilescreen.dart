@@ -77,9 +77,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            Expanded(
-              child: new Text(
-                "The Flash",
+            Container(
+              margin: const EdgeInsets.all(1.0),
+              padding: const EdgeInsets.all(1.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent)
+              ),
+              child: Text(
+                "Başarımlarınız:",
                 style: GoogleFonts.mcLaren(),
               ),
             ),
