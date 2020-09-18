@@ -35,12 +35,45 @@ class _ProfileState extends State<Profile> {
     Widget build(BuildContext context) {
       //final user = Provider.of<CUser>(context);
       //final fruits = Provider.of<QuerySnapshot>(context);
-      return Container(
 
+      return Container(
+        color: Colors.blue[50],
         child:ListView(
           padding: new EdgeInsets.all(1.0),
           children: <Widget>[
-          SizedBox(
+            SizedBox(
+              height: 100,
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(height: 30),
+                  Text(
+                    "WordApp",
+                    style: Theme.of(context).textTheme.headline5,
+                    textAlign: TextAlign.center,
+                  ),
+                  //if (icon != null)
+                  // IconTheme(data: Theme.of(context).iconTheme, child: icon),
+                  Text(
+                    "v1.0.0",
+                    style: Theme.of(context).textTheme.bodyText2,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: 60.0,
+              child:RaisedButton(
+                color:Colors.blue[50],
+                onPressed:(){
+                  launchURL();
+                },
+                child: Text("2020 © InterestingTitle \ngithub.com/interestingtitle"),
+              ),
+
+            ),
+         /* SizedBox(
               height: 150.0,
               child:RaisedButton(
                 color:Colors.white,
@@ -48,7 +81,7 @@ class _ProfileState extends State<Profile> {
                 shape: CircleBorder(),
               ),
 
-          ),
+          ),*/
 
 
           SizedBox(
@@ -141,17 +174,7 @@ class _ProfileState extends State<Profile> {
                 },
               ),
             ),
-            SizedBox(
-              height: 60.0,
-              child:RaisedButton(
-                color:Colors.grey[100],
-                onPressed:(){
-                  launchURL();
-                },
-                child: Text("2020 © InterestingTitle \ngithub.com/interestingtitle"),
-              ),
 
-            ),
         ],
       ),
 
