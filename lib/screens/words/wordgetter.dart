@@ -6,7 +6,7 @@ import 'package:guzel_ama_ingilicce/models/variables.dart';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
-List<WordDataList> allWordsWithCategories=new List<WordDataList>();
+List<WordDataList> allWordsWithCategories=new List();
 int wordListCount=0;
 String chosenWord="";
 String currentCategory;
@@ -173,7 +173,9 @@ void pickRandomCategory()
   int rnd = random.nextInt(5)+0;
   //print(allWordsWithCategories);
   //print(rnd);
-  WordDataList _chosenCategoryList=allWordsWithCategories[3];
+  WordDataList _chosenCategoryList=allWordsWithCategories[0];
+  print(_chosenCategoryList);
+  _chosenCategoryList=allWordsWithCategories[1];
   print(_chosenCategoryList);
 
 }
