@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         elevation: 0.0,
-        title: Text("Güzel Ama İngiliççe", style: TextStyle(fontSize: 18.0),),
+        title: Text("Güzel Ama İngilizce", style: TextStyle(fontSize: 18.0),),
         actions: <Widget>[
           FlatButton.icon(
 
@@ -52,7 +52,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(height: 70.0,),
                 TextFormField(
                   textAlign: TextAlign.center,
-                  decoration: textInputDecoration.copyWith(hintText: "Email"),
+                  decoration: textInputDecoration.copyWith(hintText: "E-mail"),
                   validator: (val){
                     if(val.isEmpty)
                       return "Lütfen geçerli bir email adresi giriniz";

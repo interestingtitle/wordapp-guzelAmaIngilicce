@@ -50,7 +50,7 @@ class _RegisterState extends State<Register> {
                   SizedBox(height: 70.0,),
                   TextFormField(
                     textAlign: TextAlign.center,
-                    decoration: textInputDecoration.copyWith(hintText: "Email"),
+                    decoration: textInputDecoration.copyWith(hintText: "E-mail"),
                     validator: (val){
                       if(val.isEmpty)
                         return "Lütfen geçerli bir email adresi giriniz";
@@ -85,7 +85,7 @@ class _RegisterState extends State<Register> {
                     color: Colors.blue,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                     child: Text(
-                      "Email İle Kayıt Ol",
+                      "E-mail İle Kayıt Ol",
                       style: TextStyle(
                           color: Colors.white
                       ),
