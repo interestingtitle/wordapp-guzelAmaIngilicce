@@ -6,10 +6,12 @@ import 'package:guzel_ama_ingilicce/models/variables.dart';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();
-List<WordDataList> allWordsWithCategories=new List();
+List allWordsWithCategories=new List<dynamic>();
+List categoriesList=new List();
 int wordListCount=0;
-String chosenWord="";
+WordData chosenWord;
 String currentCategory;
+int categoryWordCount=5;
 void setOptionColors()
 {
   Color colorQuestion=Colors.lightGreen[200];
@@ -29,12 +31,23 @@ class WordData
   String category;
   String dataEN;
   String dataTR;
-  WordData({this.dataEN,this.dataTR});
+  WordData({this.dataEN,this.dataTR,this.category});
   @override
   String toString() {
-    return 'WordData: {dataEN: $dataEN, dataTR: $dataTR}';
+    return 'WordData: {dataEN: $dataEN, dataTR: $dataTR,category:$category}';
   }
 }
+class WordDataList
+{
+  List <WordData> items=new List<WordData>();
+  String categoryName;
+  WordDataList({this.items,this.categoryName});
+  @override
+  String toString() {
+    return 'WordDataList{category: $categoryName, items: $items}';
+  }
+}
+
 
 void createWordData(String enValue,String trValue )
 {
@@ -64,10 +77,10 @@ int randomInt(int a,int b)
 {
       var random=new Random();
       int rnd = random.nextInt(b)+a;
-      chosenWord=wordList[rnd].dataEN;
+      chosenWord=wordList[rnd];
+
       //print("Chosen word: " +chosenWord);
       return rnd;
-
 }
 
 Future <void> getRandomWordList() async
@@ -75,11 +88,11 @@ Future <void> getRandomWordList() async
   wordList.clear();
   wordListCount=0;
 
-  String _setCategory="clothes";
+  String _setCategory='colors';
 
   for(int i=0;wordList.length<=2;i++) {
     Random random = new Random();
-    int randomNumber = random.nextInt(16) + 1;
+    int randomNumber = random.nextInt(10) + 1;
     await FirebaseFirestore.instance
         .collection('wordlist').doc('category').collection(_setCategory).doc(randomNumber.toString())
         .get()
@@ -119,16 +132,6 @@ void printList()
   });
 }
 
-class WordDataList
-{
-  List <WordData> items;
-  String categoryName;
-  WordDataList({this.items,this.categoryName});
-  @override
-  String toString() {
-    return 'WordDataList{category: $categoryName, items: $items}';
-  }
-}
 
 Future<void> getWordList() async
 {
@@ -150,36 +153,72 @@ Future<void> getWordList() async
     //print("Category:"+_listGrabber.elementAt(0).get('category'));
     for(int i=1;i<_listGrabber.length;i++)
       {
+        _category=_listGrabber.elementAt(0).get('category');
+
         //print("Data-> "+_listGrabber.elementAt(i).get('dataEN'));
         //print("Data-> "+_listGrabber.elementAt(i).get('dataTR'));
-        WordData _dummyWord=new WordData(dataEN:_listGrabber.elementAt(i).get('dataEN') ,dataTR: _listGrabber.elementAt(i).get('dataTR'));
+        WordData _dummyWord=new WordData(dataEN:_listGrabber.elementAt(i).get('dataEN') ,dataTR: _listGrabber.elementAt(i).get('dataTR'),category:_category);
         _dummyList.add(_dummyWord);
         //print(_testWord);
       }
-    _category=_listGrabber.elementAt(0).get('category');
-    //print(_category);
-    //print(_listGrabber.elementAt(1).get('dataEN'));
-    WordDataList _dummyAllWords=new WordDataList(items:_dummyList,categoryName: _category); //Initialize allWordsWithCategories
+    categoriesList.add(_category);
+    //print(_dummyList);
+    WordDataList _dummyAllWords=new WordDataList(items:_dummyList,categoryName: _category);
     //print("Category: "+_dummyAllWords.categoryName);
     //print("Length: "+_dummyAllWords.items.length.toString());
     //print("Test: "+_dummyAllWords.items.elementAt(1).dataEN);
-    allWordsWithCategories.add(_dummyAllWords);
+    allWordsWithCategories.addAll(_dummyList);
     //print(allWordsWithCategories[index-1]);
-    _dummyList.clear();
-    _dummyAllWords=null;
-    _listGrabber.clear();
+    print("Getting wordlist from database. Done.");
   }
 }
-
-void pickRandomCategory()
+void chooseRandomWord()
 {
+  var random=new Random();
+  int rndIndex=random.nextInt(2)+0;
+  chosenWord=wordList[rndIndex];
+}
+
+Future <void> pickRandomCategory() async
+{
+  List <WordData> _itemsFromCategory=new List<WordData>();
   var random=new Random();
   int rnd = random.nextInt(5)+0;
   //print(allWordsWithCategories);
   //print(rnd);
-  WordDataList _chosenCategoryList=allWordsWithCategories[0];
-  print(_chosenCategoryList);
-  _chosenCategoryList=allWordsWithCategories[1];
-  print(_chosenCategoryList);
+  var chosenCategory=categoriesList[rnd];
+  _itemsFromCategory.clear();
+  allWordsWithCategories.forEach((element) {
+    //print(element.category);
+    if(element.category==chosenCategory)
+      {
+        //print(element.category + chosenCategory);
+        _itemsFromCategory.add(WordData(category: element.category,dataTR: element.dataTR,dataEN: element.dataEN));
+      }
 
+
+  }
+  );
+  currentCategory=_itemsFromCategory[0].category;
+  int rndIndex=0;
+  for(int i=0;i<=2;i++)
+    {
+      rndIndex = random.nextInt(_itemsFromCategory.length)+0;
+      wordList[i]=_itemsFromCategory[rndIndex];
+      //print(wordList[i]);
+    }
+
+  for (var i =2; i > 0; i--) {
+    // Pick a pseudorandom number according to the list length
+    var n = random.nextInt(i + 1);
+    var temp = wordList[i];
+    //print("Temp "+temp.toString());
+    wordList[i] = wordList[n];
+    wordList[n] = temp;
+  }
+
+
+  //print(_itemsFromCategory);
+  //chooseRandomWord();
+  print(wordList);
 }

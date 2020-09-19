@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guzel_ama_ingilicce/models/user.dart';
+import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
 import 'package:guzel_ama_ingilicce/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:guzel_ama_ingilicce/services/auth.dart';
@@ -11,6 +12,7 @@ import 'dart:io';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await getWordList();
   runApp(new MaterialApp(
     home: new MyApp(),
   ));
@@ -27,6 +29,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     connectivityDataGetter();
     listenConnection();
+
   }
 
 

@@ -33,6 +33,7 @@ class _WordsTestState extends State<WordsTest> {
 
   Future<void> getAnswer(int optionIndex,String word) async
   {
+    print("->"+word);
     if(await DataConnectionChecker().hasConnection){
       await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
         currentPointForUser = value.get("userPoint").toString();
@@ -44,15 +45,17 @@ class _WordsTestState extends State<WordsTest> {
       optionColorList[2] = Colors.grey[150];
       optionColorList[3] = Colors.grey[150];
       //print(optionIndex.toString()+word);
-      if (chosenWord == word) {
+      print(chosenWord.dataEN);
+      if (chosenWord.dataEN== word) {
         //print("Correct Answer");
+
         _currentPointForUser2= _currentPointForUser2+_additionPoint;
         await DatabaseService(uid: _asd.uid).updateUserPoint(_currentPointForUser2);
         Toast.show(
             "Tebrikler! Doğru cevap.", context, duration: Toast.LENGTH_SHORT,
             gravity: Toast.BOTTOM);
         optionColorList[4]=Colors.green;
-        optionStatus="İyi gidiyorsun!: "+chosenWord;
+        optionStatus="İyi gidiyorsun!: "+chosenWord.dataTR;
         //print(optionIndex);
       }
       else if (word == "none") {
@@ -65,10 +68,11 @@ class _WordsTestState extends State<WordsTest> {
         Toast.show(
             "Üzgünüm, yanlış cevap.", context, duration: Toast.LENGTH_SHORT,
             gravity: Toast.BOTTOM);
-        optionStatus="Yanlış cevap: "+chosenWord;
+        optionStatus="Yanlış cevap: "+chosenWord.dataTR;
 
         optionColorList[4]=Colors.red;
       }
+      pickRandomCategory();
     }
   else
     {
@@ -125,17 +129,19 @@ class _WordsTestState extends State<WordsTest> {
                   flex: 10,
                   child: RaisedButton(
                     child: Text(wordList[randomInt(0,2)].dataTR.toString()),
+                    //child: Text(chosenWord.dataTR),
                     color: optionColorList[0],
                     onPressed: () async {
                       //await getRandomWordList();
+                      chooseRandomWord();
                       pickRandomCategory();
                       //printList();
-                      //await getWordList();
+                      await getWordList();
                       setState((){
-                        //optionA = wordList[0].dataEN.toString();
-                        //optionB = wordList[1].dataEN.toString();
-                        //optionC = wordList[2].dataEN.toString();
-                        //getAnswer(0, "none");
+                        optionA = wordList[0].dataEN.toString();
+                        optionB = wordList[1].dataEN.toString();
+                        optionC = wordList[2].dataEN.toString();
+                        getAnswer(0, "none");
 
                       });
                     },
@@ -148,14 +154,21 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[1],
                     shape: StadiumBorder(),
                     onPressed: () async {
-                      getAnswer(1, optionA);
-                      await getRandomWordList();
+
+                      //await getRandomWordList();
+                      await getAnswer(1, optionA);
+
+                      //await pickRandomCategory();
+
+
+
                       setState(() {
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
                         optionC = wordList[2].dataEN.toString();
 
                       });
+
                     },
                   ),
                 ),
@@ -167,8 +180,13 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[3],
                     shape: StadiumBorder(),
                     onPressed: () async {
-                      getAnswer(2, optionB);
-                      await getRandomWordList();
+
+                      //await getRandomWordList();
+                      await getAnswer(2, optionB);
+                      //await pickRandomCategory();
+
+
+
                       setState(() {
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
@@ -176,6 +194,7 @@ class _WordsTestState extends State<WordsTest> {
 
                       });
                     },
+
 
                   ),
                 ),
@@ -186,8 +205,12 @@ class _WordsTestState extends State<WordsTest> {
                     color: optionColorList[3],
                     shape: StadiumBorder(),
                     onPressed: () async {
-                      getAnswer(3, optionC);
-                      await getRandomWordList();
+
+                      await getAnswer(3, optionC);
+                      //await pickRandomCategory();
+
+                      //await getRandomWordList();
+
 
                       //printList();
                       setState(() {
