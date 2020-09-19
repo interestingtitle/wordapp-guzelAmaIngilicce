@@ -87,7 +87,7 @@ Future <void> getRandomWordList() async
 {
   wordList.clear();
   wordListCount=0;
-
+    print("->GetRandomWordList");
   String _setCategory='colors';
 
   for(int i=0;wordList.length<=2;i++) {
@@ -220,5 +220,5 @@ Future <void> pickRandomCategory() async
 
   //print(_itemsFromCategory);
   //chooseRandomWord();
-  print(wordList);
+  //print(wordList);
 }

@@ -33,7 +33,7 @@ class _WordsTestState extends State<WordsTest> {
 
   Future<void> getAnswer(int optionIndex,String word) async
   {
-    print("->"+word);
+    //print("->"+word);
     if(await DataConnectionChecker().hasConnection){
       await FirebaseFirestore.instance.collection("users").doc(_asd.uid.toString()).get().then((value){
         currentPointForUser = value.get("userPoint").toString();
@@ -45,7 +45,7 @@ class _WordsTestState extends State<WordsTest> {
       optionColorList[2] = Colors.grey[150];
       optionColorList[3] = Colors.grey[150];
       //print(optionIndex.toString()+word);
-      print(chosenWord.dataEN);
+      //print(chosenWord.dataEN);
       if (chosenWord.dataEN== word) {
         //print("Correct Answer");
 
