@@ -128,7 +128,7 @@ class _WordsTestState extends State<WordsTest> {
                 Expanded(
                   flex: 10,
                   child: RaisedButton(
-                    child: Text(wordList[randomInt(0,2)].dataTR.toString()),
+                    child: Text(wordList[randomInt(0,3)].dataTR.toString()),
                     //child: Text(chosenWord.dataTR),
                     color: optionColorList[0],
                     onPressed: () async {

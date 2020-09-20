@@ -175,7 +175,7 @@ Future<void> getWordList() async
 void chooseRandomWord()
 {
   var random=new Random();
-  int rndIndex=random.nextInt(2)+0;
+  int rndIndex=random.nextInt(3)+0;
   chosenWord=wordList[rndIndex];
 }
 
