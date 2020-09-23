@@ -136,7 +136,7 @@ class _WordsTestState extends State<WordsTest> {
                       chooseRandomWord();
                       pickRandomCategory();
                       //printList();
-                      await getWordList();
+                      //await getWordList();
                       setState((){
                         optionA = wordList[0].dataEN.toString();
                         optionB = wordList[1].dataEN.toString();
