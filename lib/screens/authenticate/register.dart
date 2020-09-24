@@ -14,7 +14,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-
+  print("test");
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = "";
