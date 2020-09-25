@@ -26,9 +26,6 @@ class WordGame extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
             onTap: () {
               Navigator.push(
                 context,
@@ -49,7 +46,6 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Todo todo = ModalRoute.of(context).settings.arguments;
 
-    // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),

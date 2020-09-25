@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
       value: DatabaseService().fruits,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Hoşgeldiniz - Oturum Açıldı",style: TextStyle(fontSize: 16.0),),
+          title: Text("Hoşgeldiniz",style: TextStyle(fontSize: 16.0),),
           backgroundColor: Colors.blue,
           elevation: 0.0,
           actions: <Widget>[
