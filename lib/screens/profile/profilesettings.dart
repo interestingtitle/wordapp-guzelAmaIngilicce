@@ -42,7 +42,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   showTitleLeft: !_titleOnTop, showTopTitle: _titleOnTop),
               rowData: SettingsURLConfig(
                   title: 'Privacy',
-                  url: 'https://yourprivacystuff.notexistant')),
+                  url: 'github.com/interestingtitle')),
           SizedBox(height: _titleOnTop ? 10.0 : 0.0),
           new SettingRow(
               config: SettingsRowConfiguration(
