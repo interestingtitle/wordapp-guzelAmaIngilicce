@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:guzel_ama_ingilicce/screens/profile/profilesettings.dart';
-//import 'package:guzel_ama_ingilicce/services/auth.dart';
-//import 'package:guzel_ama_ingilicce/profile/profilesettings.dart';
+import 'package:guzelamaingilizce/screens/profile/profilesettings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 launchURL() async {

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
+import 'package:guzelamaingilizce/screens/words/wordgetter.dart';
 
 Widget getCategoryName()
 {

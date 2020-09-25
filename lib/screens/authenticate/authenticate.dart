@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/screens/authenticate/register.dart';
-import 'package:guzel_ama_ingilicce/screens/authenticate/sign_in.dart';
+import 'package:guzelamaingilizce/screens/authenticate/register.dart';
+import 'package:guzelamaingilizce/screens/authenticate/sign_in.dart';
 
 class Authenticate extends StatefulWidget {
   @override

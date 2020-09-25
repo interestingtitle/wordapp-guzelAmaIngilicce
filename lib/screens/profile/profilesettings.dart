@@ -10,7 +10,7 @@ class ProfileSettings extends StatefulWidget {
 
 class _ProfileSettingsState extends State<ProfileSettings> {
   bool _chatResult = true;
-  String _searchAreaResult = 'Germany';
+  String _searchAreaResult = 'Turkey';
   bool _titleOnTop = false;
 
   @override

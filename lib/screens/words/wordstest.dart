@@ -1,16 +1,16 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:guzel_ama_ingilicce/screens/words/pointChanges.dart';
+import 'package:guzelamaingilizce/screens/words/pointChanges.dart';
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/models/variables.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
-import 'package:guzel_ama_ingilicce/services/database.dart';
+import 'package:guzelamaingilizce/models/variables.dart';
+import 'package:guzelamaingilizce/screens/words/wordgetter.dart';
+import 'package:guzelamaingilizce/services/database.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
-import 'package:guzel_ama_ingilicce/services/connectivity.dart';
+import 'package:guzelamaingilizce/services/connectivity.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:guzel_ama_ingilicce/models/datasetter.dart';
+import 'package:guzelamaingilizce/models/datasetter.dart';
 
 
 class WordsTest extends StatefulWidget {

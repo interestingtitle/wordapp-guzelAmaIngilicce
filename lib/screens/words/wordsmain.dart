@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/models/user.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
-import 'package:guzel_ama_ingilicce/models/variables.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
+import 'package:guzelamaingilizce/models/user.dart';
+import 'package:guzelamaingilizce/screens/words/wordstest.dart';
+import 'package:guzelamaingilizce/models/variables.dart';
+import 'package:guzelamaingilizce/screens/words/wordgetter.dart';
 import 'package:provider/provider.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:guzelamaingilizce/services/auth.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:toast/toast.dart';
 class Words extends StatefulWidget {

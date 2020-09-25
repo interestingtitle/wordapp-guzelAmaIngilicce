@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:guzel_ama_ingilicce/models/user.dart';
-import 'package:guzel_ama_ingilicce/services/database.dart';
+import 'package:guzelamaingilizce/models/user.dart';
+import 'package:guzelamaingilizce/services/database.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {

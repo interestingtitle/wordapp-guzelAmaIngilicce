@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/models/user.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
-import 'package:guzel_ama_ingilicce/screens/wrapper.dart';
+import 'package:guzelamaingilizce/models/user.dart';
+import 'package:guzelamaingilizce/screens/words/wordgetter.dart';
+import 'package:guzelamaingilizce/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
-import 'package:guzel_ama_ingilicce/services/connectivity.dart';
+import 'package:guzelamaingilizce/services/auth.dart';
+import 'package:guzelamaingilizce/services/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'dart:io';

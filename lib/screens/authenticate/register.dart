@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
-import 'package:guzel_ama_ingilicce/shared/constants.dart';
-import 'package:guzel_ama_ingilicce/shared/loading.dart';
+import 'package:guzelamaingilizce/services/auth.dart';
+import 'package:guzelamaingilizce/shared/constants.dart';
+import 'package:guzelamaingilizce/shared/loading.dart';
 import 'package:flutter/cupertino.dart';
 //import 'package:toast/toast.dart';
 class Register extends StatefulWidget {
@@ -14,7 +14,6 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  print("test");
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = "";

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/screens/profile/profilescreen.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordsmain.dart';
-import 'package:guzel_ama_ingilicce/services/auth.dart';
+import 'package:guzelamaingilizce/screens/profile/profilescreen.dart';
+import 'package:guzelamaingilizce/screens/words/wordsmain.dart';
+import 'package:guzelamaingilizce/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:guzel_ama_ingilicce/screens/home/settings.dart';
-import 'package:guzel_ama_ingilicce/services/database.dart';
+import 'package:guzelamaingilizce/screens/home/settings.dart';
+import 'package:guzelamaingilizce/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';

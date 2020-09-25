@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
-import 'package:guzel_ama_ingilicce/models/variables.dart';
+import 'package:guzelamaingilizce/models/variables.dart';
 
 List <WordData> wordList=new List();
 List <Color> optionColorList=new List();

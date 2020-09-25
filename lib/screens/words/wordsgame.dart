@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordstest.dart';
-import 'package:guzel_ama_ingilicce/screens/words/wordgetter.dart';
+import 'package:guzelamaingilizce/screens/words/wordstest.dart';
+import 'package:guzelamaingilizce/screens/words/wordgetter.dart';
 class Todo {
   final String title;
   final String description;
