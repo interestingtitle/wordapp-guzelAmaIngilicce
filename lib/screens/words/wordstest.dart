@@ -10,7 +10,6 @@ import 'package:toast/toast.dart';
 import 'package:flutter_countdown_timer/countdown_timer.dart';
 import 'package:guzelamaingilizce/services/connectivity.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:guzelamaingilizce/models/datasetter.dart';
 
 
 class WordsTest extends StatefulWidget {
