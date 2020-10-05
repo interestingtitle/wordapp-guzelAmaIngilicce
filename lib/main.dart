@@ -62,13 +62,13 @@ class _MyAppState extends State<MyApp> {
       return new SplashScreen(
           seconds: 6,
           navigateAfterSeconds: new AfterSplash(),
-          title: new Text('Güzel Ama İngilizce', style: TextStyle(color: Colors.black),),
-          image: Image.asset('assets/openingscene.gif',width: 128.0, height: 128.0,),
+          title: new Text('', style: TextStyle(color: Colors.black),),
+          image: Image.asset('assets/it4.png',width: 137.0, height: 137.0,),
           backgroundColor: Colors.blue[100],
           styleTextUnderTheLoader: new TextStyle(),
           photoSize: 200.0,
-          loaderColor: Colors.blue[100],
-          loadingText:Text("Yükleniyor..."),
+          loaderColor: Colors.blue[800],
+          loadingText:Text(""),
 
       );
     }else{
