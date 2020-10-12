@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       color: Colors.grey[100],
                                       child: Center(
                                         child: Text(
-                                          "Kullanıcı Adı: Barış",
+                                          "Puanınız: $_currentPointForUser2",
                                           style: GoogleFonts.mcLaren(),
                                         ),
                                       ),
