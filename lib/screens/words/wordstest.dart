@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:guzelamaingilizce/screens/words/pointChanges.dart';
 import 'package:flutter/material.dart';
 import 'package:guzelamaingilizce/models/variables.dart';
@@ -127,7 +128,8 @@ class _WordsTestState extends State<WordsTest> {
                 Expanded(
                   flex: 10,
                   child: RaisedButton(
-                    child: Text(wordList[randomInt(0,3)].dataTR.toString()),
+
+                    child: Text(wordList[randomInt(0,3)].dataTR.toString(),style: TextStyle(fontSize: 25.0)),
                     //child: Text(chosenWord.dataTR),
                     color: optionColorList[0],
                     onPressed: () async {
@@ -147,78 +149,99 @@ class _WordsTestState extends State<WordsTest> {
                   ),
                 ),
                 Expanded(
+
                   flex: 5,
-                  child: RaisedButton(
-                    child: Text(optionA),
-                    color: optionColorList[1],
-                    shape: StadiumBorder(),
-                    onPressed: () async {
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.black)
+                      ),
+                      padding: EdgeInsets.all(5),
+                      child: Text("A) " + optionA,style: TextStyle(fontSize: 20.0),),
+                      color: optionColorList[1],
+                      onPressed: () async {
 
-                      //await getRandomWordList();
-                      await getAnswer(1, optionA);
+                        //await getRandomWordList();
+                        await getAnswer(1, optionA);
 
-                      //await pickRandomCategory();
+                        //await pickRandomCategory();
 
 
 
-                      setState(() {
-                        optionA = wordList[0].dataEN.toString();
-                        optionB = wordList[1].dataEN.toString();
-                        optionC = wordList[2].dataEN.toString();
+                        setState(() {
+                          optionA = wordList[0].dataEN.toString();
+                          optionB = wordList[1].dataEN.toString();
+                          optionC = wordList[2].dataEN.toString();
 
-                      });
+                        });
 
-                    },
+                      },
+                    ),
                   ),
                 ),
 
                 Expanded(
                   flex: 5,
-                  child: RaisedButton(
-                    child: Text(optionB),
-                    color: optionColorList[3],
-                    shape: StadiumBorder(),
-                    onPressed: () async {
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.black)
+                      ),
+                      child: Text("B) " + optionB,style: TextStyle(fontSize: 20.0)),
+                      color: optionColorList[3],
 
-                      //await getRandomWordList();
-                      await getAnswer(2, optionB);
-                      //await pickRandomCategory();
+                      onPressed: () async {
 
-
-
-                      setState(() {
-                        optionA = wordList[0].dataEN.toString();
-                        optionB = wordList[1].dataEN.toString();
-                        optionC = wordList[2].dataEN.toString();
-
-                      });
-                    },
+                        //await getRandomWordList();
+                        await getAnswer(2, optionB);
+                        //await pickRandomCategory();
 
 
+
+                        setState(() {
+                          optionA = wordList[0].dataEN.toString();
+                          optionB = wordList[1].dataEN.toString();
+                          optionC = wordList[2].dataEN.toString();
+
+                        });
+                      },
+
+
+                    ),
                   ),
                 ),
                 Expanded(
                   flex: 5,
-                  child: RaisedButton(
-                    child: Text(optionC),
-                    color: optionColorList[3],
-                    shape: StadiumBorder(),
-                    onPressed: () async {
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.black)
+                      ),
+                      child: Text("C) " +optionC,style: TextStyle(fontSize: 20.0)),
+                      color: optionColorList[3],
+                      onPressed: () async {
 
-                      await getAnswer(3, optionC);
-                      //await pickRandomCategory();
+                        await getAnswer(3, optionC);
+                        //await pickRandomCategory();
 
-                      //await getRandomWordList();
+                        //await getRandomWordList();
 
 
-                      //printList();
-                      setState(() {
-                        optionA = wordList[0].dataEN.toString();
-                        optionB = wordList[1].dataEN.toString();
-                        optionC = wordList[2].dataEN.toString();
+                        //printList();
+                        setState(() {
+                          optionA = wordList[0].dataEN.toString();
+                          optionB = wordList[1].dataEN.toString();
+                          optionC = wordList[2].dataEN.toString();
 
-                      });
-                    },
+                        });
+                      },
+                    ),
                   ),
                 ),
 
@@ -226,7 +249,7 @@ class _WordsTestState extends State<WordsTest> {
                   flex: 10,
                   child: RaisedButton(
 
-                    child: Text(optionStatus),
+                    child: Text(optionStatus,style: TextStyle(fontSize: 20.0)),
                     color: optionColorList[4],
                     onPressed: () {
                       //printList();

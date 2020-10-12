@@ -5,13 +5,22 @@ Widget getCategoryName()
 {
   if(currentCategory == null){
     return Text(
-        "Category:?!"
+        "Category:?!",
+      style: TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+      ),
+
     );
   }
   else
   {
     return Text(
       currentCategory,
+      style: TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
